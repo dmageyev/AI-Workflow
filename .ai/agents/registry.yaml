@@ -1,37 +1,37 @@
 agents:
   - id: "architect"
     role: "System Architect"
-    prompt: "prompts/system/architect.system.md"
+    prompt: ".ai/prompts/system/architect.system.md"
     responsibilities:
       - "Проєктує структуру репозиторію та протоколи"
-      - "Веде docs/01-architecture.md та docs/03-handoff-protocol.md"
-      - "Створює ADR у memory/decisions/"
+      - "Веде .ai/docs/01-architecture.md та .ai/docs/03-handoff-protocol.md"
+      - "Створює ADR у .ai/memory/decisions/"
 
   - id: "orchestrator"
     role: "Orchestrator"
-    prompt: "prompts/system/orchestrator.system.md"
+    prompt: ".ai/prompts/system/orchestrator.system.md"
     responsibilities:
       - "Координує роботу агентів"
-      - "Підтримує memory/state/project-state.yaml"
+      - "Підтримує .ai/memory/state/project-state.yaml"
       - "Забезпечує створення Handoff Package після кожної сесії"
 
   - id: "worker"
     role: "Worker"
-    prompt: "prompts/system/agent.worker.system.md"
+    prompt: ".ai/prompts/system/agent.worker.system.md"
     responsibilities:
       - "Виконує конкретні задачі з work_items"
       - "Продукує артефакти (файли)"
 
   - id: "reviewer"
     role: "Reviewer"
-    prompt: "prompts/system/agent.reviewer.system.md"
+    prompt: ".ai/prompts/system/agent.reviewer.system.md"
     responsibilities:
-      - "Перевіряє артефакти за docs/04-quality-gates.md"
+      - "Перевіряє артефакти за .ai/docs/04-quality-gates.md"
       - "Виносить вердикт approved / rejected"
 
   - id: "researcher"
     role: "Researcher"
-    prompt: "prompts/system/agent.researcher.system.md"
+    prompt: ".ai/prompts/system/agent.researcher.system.md"
     responsibilities:
       - "Досліджує теми та збирає інформацію"
-      - "Зберігає знахідки у memory/knowledge/"
+      - "Зберігає знахідки у .ai/memory/knowledge/"
