@@ -27,7 +27,7 @@
 - описані ролі/реєстр у [`agents/registry.yaml`](../../agents/registry.yaml)
 - описаний протокол передачі у [`docs/03-handoff-protocol.md`](../03-handoff-protocol.md)
 - готовий runbook у [`workflows/runbook.uk.md`](../../workflows/runbook.uk.md)
-- створена перша сесія у [`logs/sessions/`](../../logs/sessions/)`YYYY-MM-DD-HHmm-topic/` (якщо агент має право комітити)
+- створена перша сесія у [`logs/sessions/YYYY-MM-DD-HHmm-topic/`](../../logs/sessions/) (якщо агент має право комітити)
 
 ## Якщо агент не має права комітити
 
@@ -38,7 +38,7 @@
 
 ## Мінімальний "перший handoff" вручну
 
-1. Створи папку: [`logs/sessions/`](../../logs/sessions/)`YYYY-MM-DD-HHmm-bootstrap/`
+1. Створи папку: [`logs/sessions/YYYY-MM-DD-HHmm-bootstrap/`](../../logs/sessions/)
 2. Додай:
    - `snapshot.yaml` (копія [`prompts/handoff/snapshot.template.yaml`](../../prompts/handoff/snapshot.template.yaml) + заповнити)
    - `handoff.md` (копія [`prompts/handoff/handoff.template.md`](../../prompts/handoff/handoff.template.md) + заповнити)

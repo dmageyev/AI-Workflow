@@ -31,7 +31,7 @@
 
 5. Перша сесія (мінімальний порядок):
    - Онови стан: [`.ai/memory/state/project-state.yaml`](./.ai/memory/state/project-state.yaml)
-   - Створи папку сесії: [`.ai/logs/sessions/`](./.ai/logs/sessions/)`YYYY-MM-DD-HHmm-topic/`
+   - Створи папку сесії: [`.ai/logs/sessions/YYYY-MM-DD-HHmm-topic/`](./.ai/logs/sessions/)
    - Додай туди:
      - `snapshot.yaml` (за шаблоном [`.ai/prompts/handoff/snapshot.template.yaml`](./.ai/prompts/handoff/snapshot.template.yaml))
      - `handoff.md` (за шаблоном [`.ai/prompts/handoff/handoff.template.md`](./.ai/prompts/handoff/handoff.template.md))
@@ -135,7 +135,7 @@ AI-Workflow/
    - зміни в репо
    - ADR (якщо потрібні рішення) у [`.ai/memory/decisions/`](./.ai/memory/decisions/)
    - оновлення [`.ai/memory/state/project-state.yaml`](./.ai/memory/state/project-state.yaml)
-   - новий Handoff Package у [`.ai/logs/sessions/`](./.ai/logs/sessions/)`YYYY-MM-DD-HHmm-topic/`
+   - новий Handoff Package у [`.ai/logs/sessions/YYYY-MM-DD-HHmm-topic/`](./.ai/logs/sessions/)
 
 ## Quality Gates
 

@@ -31,7 +31,7 @@
 
 ## 4. Закриття сесії
 
-1. Створи папку: [`logs/sessions/`](../logs/sessions/)`YYYY-MM-DD-HHmm-topic/`
+1. Створи папку: [`logs/sessions/YYYY-MM-DD-HHmm-topic/`](../logs/sessions/)
 2. Заповни `snapshot.yaml` (шаблон: [`prompts/handoff/snapshot.template.yaml`](../prompts/handoff/snapshot.template.yaml)).
 3. Заповни `handoff.md` (шаблон: [`prompts/handoff/handoff.template.md`](../prompts/handoff/handoff.template.md)).
 4. Оновити [`memory/state/project-state.yaml`](../memory/state/project-state.yaml).

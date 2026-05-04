@@ -64,7 +64,7 @@
 
 1. Встанови реальні work items у [`memory/state/project-state.yaml`](../memory/state/project-state.yaml).
 2. Створи папку першої сесії:
-   [`logs/sessions/`](../logs/sessions/)`YYYY-MM-DD-HHmm-bootstrap/`
+   [`logs/sessions/YYYY-MM-DD-HHmm-bootstrap/`](../logs/sessions/)
 3. Заповни `snapshot.yaml` та `handoff.md` за шаблонами з [`prompts/handoff/`](../prompts/handoff/).
 4. Закоміть — CI перевірить структуру сесії автоматично.
 

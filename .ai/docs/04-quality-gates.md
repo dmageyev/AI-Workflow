@@ -4,7 +4,7 @@
 
 ## Чекліст завершення сесії
 
-- [ ] Створено папку сесії: [`logs/sessions/`](../logs/sessions/)`YYYY-MM-DD-HHmm-topic/`
+- [ ] Створено папку сесії: [`logs/sessions/YYYY-MM-DD-HHmm-topic/`](../logs/sessions/)
 - [ ] Створено `snapshot.yaml` (усі обов'язкові поля заповнені)
 - [ ] Створено `handoff.md` (усі секції заповнені)
 - [ ] Оновлено [`memory/state/project-state.yaml`](../memory/state/project-state.yaml) (статуси work items, фаза, прогрес)
@@ -36,7 +36,7 @@
 
 ## Чекліст ADR (якщо приймалося рішення)
 
-- [ ] Файл іменовано: [`memory/decisions/`](../memory/decisions/)`NNNN-kebab-case-title.md`
+- [ ] Файл іменовано: [`memory/decisions/NNNN-kebab-case-title.md`](../memory/decisions/)
 - [ ] Наявні секції: Context, Decision, Consequences, Status
 - [ ] Рішення посилається з handoff.md
 

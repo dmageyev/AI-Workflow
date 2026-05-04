@@ -26,8 +26,8 @@
 
 - Оновити статуси work items у [`memory/state/project-state.yaml`](../memory/state/project-state.yaml).
 - Створити Handoff Package:
-  - [`logs/sessions/`](../logs/sessions/)`YYYY-MM-DD-HHmm-topic/snapshot.yaml`
-  - [`logs/sessions/`](../logs/sessions/)`YYYY-MM-DD-HHmm-topic/handoff.md`
+  - [`logs/sessions/YYYY-MM-DD-HHmm-topic/snapshot.yaml`](../logs/sessions/)
+  - [`logs/sessions/YYYY-MM-DD-HHmm-topic/handoff.md`](../logs/sessions/)
 - Перевірити quality gates ([`docs/04-quality-gates.md`](04-quality-gates.md)).
 - Закомітити всі зміни.
 
