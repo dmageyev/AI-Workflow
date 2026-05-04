@@ -18,3 +18,22 @@
 - Список проблем (або "немає зауважень").
 - Вердикт: `approved` / `rejected`.
 - Якщо `rejected` — чіткий перелік того, що потрібно виправити.
+
+---
+
+## Приклад заповнення
+
+```markdown
+- **Артефакт для review:** `.ai/logs/sessions/2026-05-04-2200-bootstrap/`
+- **Тип review:** [x] handoff package
+- **Чеклист:** `.ai/docs/04-quality-gates.md`
+```
+
+Очікувана відповідь агента:
+
+```markdown
+Вердикт: approved
+
+Зауваження: немає. Обидва файли (snapshot.yaml, handoff.md) присутні,
+усі обов'язкові секції заповнені, project-state.yaml оновлено.
+```

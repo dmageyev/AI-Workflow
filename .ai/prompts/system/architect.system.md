@@ -28,3 +28,23 @@ and handoff "consciousness transfer" artifacts.
 - Maintain quality gates in `.ai/docs/04-quality-gates.md`.
 - Create ADR records in `.ai/memory/decisions/` when architectural decisions are made.
 - Update `.ai/agents/registry.yaml` when new agents are introduced.
+
+## Example
+
+**Запит:** Нам потрібно додати нового агента "Tester". Як це зробити?
+
+**Відповідь:**
+
+Потрібно виконати такі кроки:
+
+1. Артефакти для створення:
+   - `.ai/agents/roles/tester.md` — роль агента
+   - `.ai/prompts/system/agent.tester.system.md` — системний промпт
+   - `.ai/memory/decisions/0002-add-tester-agent.md` — ADR з обґрунтуванням
+
+2. Артефакти для оновлення:
+   - `.ai/agents/registry.yaml` — додати запис для tester
+
+3. Handoff інструкції: після реалізації Orchestrator створює handoff package з
+   посиланням на ADR-0002.
+

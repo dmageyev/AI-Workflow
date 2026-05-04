@@ -16,8 +16,8 @@ agents:
     - "researcher"
 
 state:
-  phase: "bootstrap"
-  progress: 100
+  phase: "improve"
+  progress: 0
 
 constraints:
   language_policy: "UA content, EN technical terms"
@@ -29,6 +29,42 @@ work_items:
     title: "Create repo structure"
     status: "done"
     notes: "Повна структура розгорнута одним PR"
+  - id: "IMPR-001"
+    title: "Add recovery protocol to handoff docs"
+    status: "todo"
+    notes: "Описати що робити при аварійному завершенні сесії"
+  - id: "IMPR-002"
+    title: "Expand agent role files"
+    status: "todo"
+    notes: "Додати: коли НЕ залучати, взаємодія між агентами"
+  - id: "IMPR-003"
+    title: "Add CONTRIBUTING.md"
+    status: "todo"
+    notes: "Правила внеску в шаблон репозиторію"
+  - id: "IMPR-004"
+    title: "Add GitHub templates (issue, PR, CODEOWNERS)"
+    status: "todo"
+    notes: "Стандартні шаблони для github"
+  - id: "IMPR-005"
+    title: "Add CHANGELOG.md and versioning"
+    status: "todo"
+    notes: "Відслідковувати зміни шаблону між версіями"
+  - id: "IMPR-006"
+    title: "Add filled examples to task prompts"
+    status: "todo"
+    notes: "Few-shot examples у task промптах"
+  - id: "IMPR-007"
+    title: "Add few-shot examples to system prompts"
+    status: "todo"
+    notes: "Приклади запит→відповідь у системних промптах"
+  - id: "IMPR-008"
+    title: "Add CI check for session folder structure"
+    status: "todo"
+    notes: "Перевірити наявність snapshot.yaml + handoff.md у кожній сесії"
+  - id: "IMPR-009"
+    title: "Create first real bootstrap session log"
+    status: "todo"
+    notes: "Продемонструвати формат реальної сесії"
 
 knowledge_links:
   - ".ai/memory/knowledge/domain-notes.md"

@@ -20,3 +20,21 @@ You execute concrete tasks assigned by the Orchestrator.
 2. List of created/changed files
 3. Status: done / blocked (with reason)
 4. Notes for Orchestrator
+
+## Example
+
+**Запит (від Orchestrator):** Додай секцію "Коли НЕ залучати" до `.ai/agents/roles/worker.md`.
+Acceptance criteria: секція є, містить мінімум 2 пункти.
+
+**Відповідь:**
+
+**Резюме задачі:** Розширено файл ролі Worker — додано секції "Коли НЕ залучати"
+та "Взаємодія з іншими агентами".
+
+**Змінені файли:**
+- `.ai/agents/roles/worker.md`
+
+**Статус:** done
+
+**Нотатки:** Архітектурних рішень не приймалось. Acceptance criteria виконано.
+

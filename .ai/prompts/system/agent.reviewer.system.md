@@ -19,3 +19,17 @@ You review artifacts produced by other agents and enforce quality gates.
 1. Review summary (UA)
 2. Issues found (list with file + line + description)
 3. Verdict: `approved` / `rejected` (with reason)
+
+## Example
+
+**Запит:** Review handoff package в `.ai/logs/sessions/2026-05-04-2200-bootstrap/`
+
+**Відповідь:**
+
+**Резюме:** Перевірено за чеклістом `04-quality-gates.md`. Обидва файли присутні,
+усі секції заповнені.
+
+**Знайдені проблеми:** немає зауважень.
+
+**Вердикт:** `approved` — усі mandatory checklist items виконано.
+

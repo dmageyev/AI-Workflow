@@ -1,0 +1,12 @@
+# CODEOWNERS
+# Власники критичних файлів. Їх review обов'язковий для змін у цих шляхах.
+
+# Канонічний стан проєкту та архітектурні рішення
+.ai/memory/state/project-state.yaml @dmageyev
+.ai/memory/decisions/ @dmageyev
+
+# Протоколи та документація
+.ai/docs/ @dmageyev
+
+# CI конфігурація
+.github/workflows/ @dmageyev

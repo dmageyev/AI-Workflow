@@ -22,3 +22,26 @@
 
 - Список work items у форматі YAML.
 - Оновлений `project-state.yaml` (або diff).
+
+---
+
+## Приклад заповнення
+
+```markdown
+- **Мета:** Спланувати покращення якості промптів у наступному спринті
+- **Контекст:** `.ai/logs/sessions/2026-05-04-2200-bootstrap/handoff.md`
+- **Обмеження:** Не більше 5 work items, без змін структури репозиторію
+```
+
+Очікуваний результат від агента:
+
+```yaml
+work_items:
+  - id: "IMPR-001"
+    title: "Add few-shot examples to system prompts"
+    owner: "worker"
+    status: "todo"
+    acceptance_criteria:
+      - "Кожен system prompt має секцію ## Example"
+      - "Наведено мінімум 1 приклад запит→відповідь"
+```

@@ -34,3 +34,42 @@ jobs:
 
       - name: Run yamllint
         run: yamllint -c .yamllint.yml .
+
+  session-structure:
+    name: Session Structure Check
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check session folder structure
+        shell: bash
+        run: |
+          EXIT_CODE=0
+          SESSIONS_DIR=".ai/logs/sessions"
+
+          if [ ! -d "$SESSIONS_DIR" ]; then
+            echo "INFO: $SESSIONS_DIR does not exist, skipping check."
+            exit 0
+          fi
+
+          for session_dir in "$SESSIONS_DIR"/*/; do
+            [ -d "$session_dir" ] || continue
+            session_name=$(basename "$session_dir")
+
+            if [ ! -f "$session_dir/snapshot.yaml" ]; then
+              echo "ERROR: $session_dir is missing snapshot.yaml"
+              EXIT_CODE=1
+            fi
+
+            if [ ! -f "$session_dir/handoff.md" ]; then
+              echo "ERROR: $session_dir is missing handoff.md"
+              EXIT_CODE=1
+            fi
+          done
+
+          if [ "$EXIT_CODE" -eq 0 ]; then
+            echo "OK: All session folders have snapshot.yaml and handoff.md"
+          fi
+          exit "$EXIT_CODE"
