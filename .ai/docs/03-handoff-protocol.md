@@ -12,7 +12,7 @@ Handoff Package — це набір артефактів, що передают�
 ## Структура папки сесії
 
 ```text
-logs/sessions/YYYY-MM-DD-topic/
+.ai/logs/sessions/YYYY-MM-DD-HHmm-topic/
   snapshot.yaml
   handoff.md
   [опційно: artifact-1.md, artifact-2.yaml, ...]
@@ -46,8 +46,8 @@ logs/sessions/YYYY-MM-DD-topic/
 
 ## Шаблони
 
-- `prompts/handoff/handoff.template.md`
-- `prompts/handoff/snapshot.template.yaml`
+- `.ai/prompts/handoff/handoff.template.md`
+- `.ai/prompts/handoff/snapshot.template.yaml`
 
 ## Правила версіонування
 

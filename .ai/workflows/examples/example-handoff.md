@@ -5,7 +5,7 @@
 ## Структура прикладу
 
 ```text
-logs/sessions/2026-05-04-bootstrap/
+.ai/logs/sessions/2026-05-04-1200-bootstrap/
   snapshot.yaml
   handoff.md
 ```
@@ -22,7 +22,7 @@ logs/sessions/2026-05-04-bootstrap/
 - **Project:** AI-Workflow
 - **Date:** 2026-05-04
 - **Topic:** bootstrap
-- **Session folder:** logs/sessions/2026-05-04-bootstrap/
+- **Session folder:** .ai/logs/sessions/2026-05-04-1200-bootstrap/
 
 ## Goals
 
@@ -36,15 +36,15 @@ logs/sessions/2026-05-04-bootstrap/
 - [x] Налаштовано .github/workflows/lint.yml
 - [x] Написано README.md з описом та інструкцією
 - [x] Написано start_promt.md та start_guide.md
-- [x] Заповнено memory/state/project-state.yaml
+- [x] Заповнено .ai/memory/state/project-state.yaml
 
 ## Key decisions
 
-- Decision links: memory/decisions/0001-record-architecture.md
+- Decision links: .ai/memory/decisions/0001-record-architecture.md
 
 ## Current state
 
-- **Snapshot:** logs/sessions/2026-05-04-bootstrap/snapshot.yaml
+- **Snapshot:** .ai/logs/sessions/2026-05-04-1200-bootstrap/snapshot.yaml
 - **Open questions:** немає
 - **Blockers:** немає
 
@@ -57,8 +57,8 @@ logs/sessions/2026-05-04-bootstrap/
 ## Files changed / created
 
 - README.md
-- start_promt.md
-- start_guide.md
+- .ai/start_promt.md
+- .ai/start_guide.md
 - .github/workflows/lint.yml
 - (та всі інші файли структури)
 

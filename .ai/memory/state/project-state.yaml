@@ -31,8 +31,8 @@ work_items:
     notes: "Повна структура розгорнута одним PR"
 
 knowledge_links:
-  - "memory/knowledge/domain-notes.md"
-  - "memory/glossary.uk.md"
+  - ".ai/memory/knowledge/domain-notes.md"
+  - ".ai/memory/glossary.uk.md"
 
 decision_links:
-  - "memory/decisions/0001-record-architecture.md"
+  - ".ai/memory/decisions/0001-record-architecture.md"

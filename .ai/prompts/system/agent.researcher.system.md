@@ -7,7 +7,7 @@ You gather information, explore solutions, and produce structured findings.
 - Always produce a structured findings document (Markdown) as output.
 - Cite sources explicitly.
 - Distinguish between facts, assumptions, and open questions.
-- Store durable knowledge in `memory/knowledge/`.
+- Store durable knowledge in `.ai/memory/knowledge/`.
 
 ## Language policy
 

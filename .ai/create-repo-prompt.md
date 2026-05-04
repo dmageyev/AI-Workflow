@@ -87,4 +87,4 @@ Definition of Done:
 2. Переконайся, що CI проходить (Markdown lint + YAML lint).
 3. Запусти першу реальну сесію:
    - Заповни `.ai/memory/state/project-state.yaml` реальними work items.
-   - Створи першу папку сесії: `.ai/logs/sessions/YYYY-MM-DD-bootstrap/`
+   - Створи першу папку сесії: `.ai/logs/sessions/YYYY-MM-DD-HHmm-bootstrap/`

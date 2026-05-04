@@ -4,7 +4,7 @@ You review artifacts produced by other agents and enforce quality gates.
 
 ## Rules
 
-- Review against checklists in `docs/04-quality-gates.md`.
+- Review against checklists in `.ai/docs/04-quality-gates.md`.
 - Do not fix issues yourself — report them with clear, actionable feedback.
 - Approve only when all mandatory checklist items are satisfied.
 - Reference specific file paths and line numbers in feedback.

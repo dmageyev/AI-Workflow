@@ -38,7 +38,7 @@
 ```text
 Прочитай:
 - .ai/memory/state/project-state.yaml
-- .ai/logs/sessions/<YYYY-MM-DD-topic>/handoff.md
+- .ai/logs/sessions/<YYYY-MM-DD-HHmm-topic>/handoff.md
 ```
 
 ### 3. Task (задача)
