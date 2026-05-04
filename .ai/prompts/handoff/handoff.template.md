@@ -4,8 +4,19 @@
 
 - **Project:** `<назва проєкту>`
 - **Date:** `<YYYY-MM-DD>`
+- **Time (UTC):** `<HH:mm>`
 - **Topic:** `<назва сесії>`
-- **Session folder:** `logs/sessions/<YYYY-MM-DD-topic>/`
+- **Session folder:** `.ai/logs/sessions/<YYYY-MM-DD-HHmm-topic>/`
+
+## Session prompt
+
+**Text:**  
+
+<Копія тексту промту для агенту, який використовувався при запуску сесії>
+
+**Plan:**
+  
+<Як цей промт агент зрозумів — коротко, 2–5 речень>
 
 ## Goals
 
@@ -23,7 +34,7 @@
 
 ## Current state
 
-- **Snapshot:** `logs/sessions/<YYYY-MM-DD-topic>/snapshot.yaml`
+- **Snapshot:** `.ai/logs/sessions/<YYYY-MM-DD-HHmm-topic>/snapshot.yaml`
 - **Open questions:**
   - `<питання 1>` або "немає"
 - **Blockers:**

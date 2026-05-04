@@ -13,9 +13,9 @@
 ## Key entry points
 
 - `README.md` — project overview and usage instructions
-- `.ai/start_promt.md` — bootstrap prompt for new repo / new work cycle
-- `.ai/start_guide.md` — instructions for using the start prompt
-- `.ai/create-repo-prompt.md` — prompt to reproduce this structure in a new repository
+- `.ai/docs/bootstrap/start_promt.md` — bootstrap prompt for new repo / new work cycle
+- `.ai/docs/bootstrap/start_guide.md` — instructions for using the start prompt
+- `.ai/docs/bootstrap/create-repo-prompt.md` — prompt to reproduce this structure in a new repository
 - `.ai/docs/05-agent-requests.md` — how to structure requests to agents
 
 ## AI agent configuration

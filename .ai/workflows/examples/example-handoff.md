@@ -28,14 +28,14 @@
 
 - [x] Розгорнути повну структуру репозиторію
 - [x] Додати GitHub Actions lint (Markdown + YAML)
-- [x] Створити README.md, start_promt.md, start_guide.md
+- [x] Створити README.md, start_promt.md, start_guide.md, create-repo-prompt.md
 
 ## What was done
 
 - [x] Створено всі директорії та файли згідно повної структури
 - [x] Налаштовано .github/workflows/lint.yml
 - [x] Написано README.md з описом та інструкцією
-- [x] Написано start_promt.md та start_guide.md
+- [x] Написано start_promt.md та start_guide.md (переміщено до .ai/docs/bootstrap/)
 - [x] Заповнено .ai/memory/state/project-state.yaml
 
 ## Key decisions
@@ -57,8 +57,9 @@
 ## Files changed / created
 
 - README.md
-- .ai/start_promt.md
-- .ai/start_guide.md
+- .ai/docs/bootstrap/start_promt.md
+- .ai/docs/bootstrap/start_guide.md
+- .ai/docs/bootstrap/create-repo-prompt.md
 - .github/workflows/lint.yml
 - (та всі інші файли структури)
 

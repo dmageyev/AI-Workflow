@@ -17,10 +17,10 @@
 ## Швидкий старт
 
 1. Стартовий промпт для запуску нового репозиторію/циклу:
-   - [`.ai/start_promt.md`](./.ai/start_promt.md)
+   - [`.ai/docs/bootstrap/start_promt.md`](./.ai/docs/bootstrap/start_promt.md)
 
 2. Інструкція до нього:
-   - [`.ai/start_guide.md`](./.ai/start_guide.md)
+   - [`.ai/docs/bootstrap/start_guide.md`](./.ai/docs/bootstrap/start_guide.md)
 
 3. Як робити запити до агентів:
    - [`.ai/docs/05-agent-requests.md`](./.ai/docs/05-agent-requests.md)
@@ -49,11 +49,11 @@ AI-Workflow/
   .github/workflows/lint.yml
 
   .ai/
-    start_promt.md
-    start_guide.md
-    create-repo-prompt.md
-
     docs/
+      bootstrap/
+        start_promt.md
+        start_guide.md
+        create-repo-prompt.md
       00-vision.md
       01-architecture.md
       02-workflow.md

@@ -1,6 +1,7 @@
 version: 1
 project: "AI-Workflow"
 date: "YYYY-MM-DD"
+time: "HH:MM"
 owner: "dmageyev"
 
 objective_ua: ""
