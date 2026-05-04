@@ -17,107 +17,116 @@
 ## Швидкий старт
 
 1. Стартовий промпт для запуску нового репозиторію/циклу:
-   - [`start_promt.md`](./start_promt.md)
+   - [`.ai/start_promt.md`](./.ai/start_promt.md)
 
 2. Інструкція до нього:
-   - [`start_guide.md`](./start_guide.md)
+   - [`.ai/start_guide.md`](./.ai/start_guide.md)
 
-3. Базова архітектура та протокол handoff:
-   - [`docs/01-architecture.md`](./docs/01-architecture.md)
-   - [`docs/03-handoff-protocol.md`](./docs/03-handoff-protocol.md)
+3. Як робити запити до агентів:
+   - [`.ai/docs/05-agent-requests.md`](./.ai/docs/05-agent-requests.md)
 
-4. Перша сесія (мінімальний порядок):
-   - Онови стан: [`memory/state/project-state.yaml`](./memory/state/project-state.yaml)
-   - Створи папку сесії: `logs/sessions/YYYY-MM-DD-topic/`
+4. Базова архітектура та протокол handoff:
+   - [`.ai/docs/01-architecture.md`](./.ai/docs/01-architecture.md)
+   - [`.ai/docs/03-handoff-protocol.md`](./.ai/docs/03-handoff-protocol.md)
+
+5. Перша сесія (мінімальний порядок):
+   - Онови стан: [`.ai/memory/state/project-state.yaml`](./.ai/memory/state/project-state.yaml)
+   - Створи папку сесії: `.ai/logs/sessions/YYYY-MM-DD-topic/`
    - Додай туди:
-     - `snapshot.yaml` (за шаблоном `prompts/handoff/snapshot.template.yaml`)
-     - `handoff.md` (за шаблоном `prompts/handoff/handoff.template.md`)
+     - `snapshot.yaml` (за шаблоном `.ai/prompts/handoff/snapshot.template.yaml`)
+     - `handoff.md` (за шаблоном `.ai/prompts/handoff/handoff.template.md`)
 
 ## Структура репозиторію
 
 ```text
 AI-Workflow/
   README.md
-  start_promt.md
-  start_guide.md
+  llms.txt
   .gitignore
   .markdownlint.json
   .yamllint.yml
 
   .github/workflows/lint.yml
 
-  docs/
-    00-vision.md
-    01-architecture.md
-    02-workflow.md
-    03-handoff-protocol.md
-    04-quality-gates.md
+  .ai/
+    start_promt.md
+    start_guide.md
+    create-repo-prompt.md
 
-  prompts/
-    system/
-      architect.system.md
-      orchestrator.system.md
-      agent.worker.system.md
-      agent.reviewer.system.md
-      agent.researcher.system.md
-    tasks/
-      create-plan.task.md
-      implement-feature.task.md
-      review.task.md
-      debug.task.md
-    handoff/
-      handoff.template.md
-      snapshot.template.yaml
+    docs/
+      00-vision.md
+      01-architecture.md
+      02-workflow.md
+      03-handoff-protocol.md
+      04-quality-gates.md
+      05-agent-requests.md
 
-  agents/
-    registry.yaml
-    roles/
-      architect.md
-      orchestrator.md
-      worker.md
-      reviewer.md
-      researcher.md
+    prompts/
+      system/
+        architect.system.md
+        orchestrator.system.md
+        agent.worker.system.md
+        agent.reviewer.system.md
+        agent.researcher.system.md
+      tasks/
+        create-plan.task.md
+        implement-feature.task.md
+        review.task.md
+        debug.task.md
+      handoff/
+        handoff.template.md
+        snapshot.template.yaml
 
-  memory/
-    glossary.uk.md
-    decisions/
-      0001-record-architecture.md
-    knowledge/
-      domain-notes.md
-    state/
-      project-state.yaml
+    agents/
+      registry.yaml
+      roles/
+        architect.md
+        orchestrator.md
+        worker.md
+        reviewer.md
+        researcher.md
 
-  workflows/
-    runbook.uk.md
-    examples/
-      example-handoff.md
+    memory/
+      glossary.uk.md
+      decisions/
+        0001-record-architecture.md
+      knowledge/
+        domain-notes.md
+      state/
+        project-state.yaml
 
-  logs/
-    sessions/
-      README.md
+    workflows/
+      runbook.uk.md
+      examples/
+        example-handoff.md
+
+    logs/
+      sessions/
+        README.md
 ```
 
-- `docs/` — бачення, архітектура, workflow, протокол передачі
-- `prompts/` — системні промпти, task-промпти, handoff-шаблони
-- `agents/` — реєстр агентів та ролі
-- `memory/` — глосарій, knowledge base, ADR-рішення, проектний стан
-- `workflows/` — runbook та приклади
-- `logs/` — журнали сесій (Handoff Packages)
+- `.ai/docs/` — бачення, архітектура, workflow, протокол передачі
+- `.ai/prompts/` — системні промпти, task-промпти, handoff-шаблони
+- `.ai/agents/` — реєстр агентів та ролі
+- `.ai/memory/` — глосарій, knowledge base, ADR-рішення, проектний стан
+- `.ai/workflows/` — runbook та приклади
+- `.ai/logs/` — журнали сесій (Handoff Packages)
+- `llms.txt` — опис репозиторію для LLM-інструментів
 
 ## Як працювати (операційна модель)
 
-1. **Orchestrator** читає `memory/state/project-state.yaml` і останній handoff з `logs/sessions/`.
+1. **Orchestrator** читає `.ai/memory/state/project-state.yaml` і останній handoff з `.ai/logs/sessions/`.
 2. Делегує підзадачі агентам (Worker / Researcher / Reviewer).
 3. Кожен результат оформлюється артефактами:
    - зміни в репо
-   - ADR (якщо потрібні рішення) у `memory/decisions/`
+   - ADR (якщо потрібні рішення) у `.ai/memory/decisions/`
    - оновлення `project-state.yaml`
-   - новий Handoff Package у `logs/sessions/YYYY-MM-DD-topic/`
+   - новий Handoff Package у `.ai/logs/sessions/YYYY-MM-DD-topic/`
 
 ## Quality Gates
 
 Перед завершенням сесії переконайся, що виконано чекліст із:
-[`docs/04-quality-gates.md`](./docs/04-quality-gates.md)
+[`.ai/docs/04-quality-gates.md`](./.ai/docs/04-quality-gates.md)
 
 ## CI / GitHub Actions
 

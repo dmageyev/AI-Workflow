@@ -1,0 +1,57 @@
+# llms.txt — AI-Workflow
+
+> This file describes the repository structure for LLM tools and AI coding agents.
+> Convention: https://llmstxt.org
+
+## Project
+
+- **Name**: AI-Workflow
+- **Owner**: dmageyev
+- **Purpose**: Template repository for multi-agent work with a "consciousness transfer" (handoff) protocol.
+- **Language policy**: Content in Ukrainian; file names, YAML keys, technical terms in English.
+
+## Key entry points
+
+- `README.md` — project overview and usage instructions
+- `.ai/start_promt.md` — bootstrap prompt for new repo / new work cycle
+- `.ai/start_guide.md` — instructions for using the start prompt
+- `.ai/create-repo-prompt.md` — prompt to reproduce this structure in a new repository
+- `.ai/docs/05-agent-requests.md` — how to structure requests to agents
+
+## AI agent configuration
+
+- `.ai/agents/registry.yaml` — agent registry (roles, prompt files)
+- `.ai/prompts/system/` — system prompts for all roles
+- `.ai/prompts/tasks/` — task prompts (create-plan, implement-feature, review, debug)
+- `.ai/prompts/handoff/` — handoff package templates
+
+## Project state (canonical)
+
+- `.ai/memory/state/project-state.yaml` — current phase, progress, work items
+- `.ai/logs/sessions/` — session history (Handoff Packages: snapshot.yaml + handoff.md)
+
+## Knowledge base
+
+- `.ai/memory/glossary.uk.md` — project glossary
+- `.ai/memory/knowledge/` — domain notes and research findings
+- `.ai/memory/decisions/` — Architecture Decision Records (ADR)
+
+## Documentation
+
+- `.ai/docs/00-vision.md` — project vision
+- `.ai/docs/01-architecture.md` — multi-agent system architecture
+- `.ai/docs/02-workflow.md` — session lifecycle and operational model
+- `.ai/docs/03-handoff-protocol.md` — handoff protocol specification
+- `.ai/docs/04-quality-gates.md` — quality checklists (session close, handoff, ADR)
+- `.ai/docs/05-agent-requests.md` — how to make requests to agents
+
+## Workflows
+
+- `.ai/workflows/runbook.uk.md` — operational runbook
+- `.ai/workflows/examples/example-handoff.md` — annotated handoff example
+
+## CI
+
+- `.github/workflows/lint.yml` — Markdown lint (markdownlint) + YAML lint (yamllint)
+- `.markdownlint.json` — markdownlint config (120-char line limit)
+- `.yamllint.yml` — yamllint config
