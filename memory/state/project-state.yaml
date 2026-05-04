@@ -1,0 +1,38 @@
+version: 1
+project: "AI-Workflow"
+date: "2026-05-04"
+owner: "dmageyev"
+
+objective_ua: "Розгортання повної структури репозиторію для мультиагентної роботи"
+current_focus: "bootstrap"
+
+agents:
+  active:
+    - "orchestrator"
+  available:
+    - "architect"
+    - "worker"
+    - "reviewer"
+    - "researcher"
+
+state:
+  phase: "bootstrap"
+  progress: 100
+
+constraints:
+  language_policy: "UA content, EN technical terms"
+  repo_policy: "All decisions recorded as ADR"
+  handoff_policy: "Every session produces snapshot + handoff"
+
+work_items:
+  - id: "BOOT-001"
+    title: "Create repo structure"
+    status: "done"
+    notes: "Повна структура розгорнута одним PR"
+
+knowledge_links:
+  - "memory/knowledge/domain-notes.md"
+  - "memory/glossary.uk.md"
+
+decision_links:
+  - "memory/decisions/0001-record-architecture.md"
