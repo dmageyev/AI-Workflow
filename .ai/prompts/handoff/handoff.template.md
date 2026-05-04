@@ -30,7 +30,7 @@
 
 ## Key decisions
 
-- Decision links: (наприклад, `memory/decisions/0001-...`)
+- Decision links: (наприклад, `.ai/memory/decisions/0001-...`)
 
 ## Current state
 
