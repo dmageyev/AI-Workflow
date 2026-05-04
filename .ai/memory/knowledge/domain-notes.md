@@ -17,7 +17,7 @@
 ### Institutional memory
 
 Накопичені знання проєкту, які не залежать від конкретного агента чи сесії.
-Зберігаються у `memory/knowledge/`, `memory/decisions/`, `memory/glossary.uk.md`.
+Зберігаються у `.ai/memory/knowledge/`, `.ai/memory/decisions/`, `.ai/memory/glossary.uk.md`.
 
 ## Нотатки для поповнення
 

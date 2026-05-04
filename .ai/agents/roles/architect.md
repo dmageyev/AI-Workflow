@@ -7,13 +7,13 @@ System Architect — відповідає за дизайн репозиторі
 ## Відповідальності
 
 - Проєктує та підтримує структуру репозиторію.
-- Визначає протокол handoff (docs/03-handoff-protocol.md).
-- Веде архітектурну документацію (docs/01-architecture.md).
-- Фіксує архітектурні рішення у memory/decisions/.
+- Визначає протокол handoff (`.ai/docs/03-handoff-protocol.md`).
+- Веде архітектурну документацію (`.ai/docs/01-architecture.md`).
+- Фіксує архітектурні рішення у `.ai/memory/decisions/`.
 
 ## Системний промпт
 
-`prompts/system/architect.system.md`
+`.ai/prompts/system/architect.system.md`
 
 ## Коли залучати
 

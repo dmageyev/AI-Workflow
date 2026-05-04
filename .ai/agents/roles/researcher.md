@@ -8,12 +8,12 @@ Researcher — досліджує теми, збирає та структуру
 
 - Відповідає на дослідницькі запитання.
 - Продукує structured findings documents.
-- Зберігає дурабельні знання у memory/knowledge/.
+- Зберігає дурабельні знання у `.ai/memory/knowledge/`.
 - Чітко розрізняє факти, припущення та відкриті питання.
 
 ## Системний промпт
 
-`prompts/system/agent.researcher.system.md`
+`.ai/prompts/system/agent.researcher.system.md`
 
 ## Коли залучати
 

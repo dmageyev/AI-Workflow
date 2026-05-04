@@ -9,11 +9,11 @@ Orchestrator — координує роботу всіх агентів і за
 - Читає project-state.yaml та останній handoff перед кожною сесією.
 - Делегує задачі Worker, Researcher, Reviewer.
 - Оновлює project-state.yaml після кожної сесії.
-- Створює Handoff Package в logs/sessions/.
+- Створює Handoff Package в `.ai/logs/sessions/`.
 
 ## Системний промпт
 
-`prompts/system/orchestrator.system.md`
+`.ai/prompts/system/orchestrator.system.md`
 
 ## Коли залучати
 

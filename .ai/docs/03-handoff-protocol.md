@@ -25,6 +25,7 @@ Handoff Package — це набір артефактів, що передают�
 | `version` | integer | Версія снапшота (починається з 1) |
 | `project` | string | Назва проєкту |
 | `date` | string | Дата у форматі YYYY-MM-DD |
+| `time` | string | Час у форматі HH:MM (UTC) |
 | `owner` | string | Відповідальний |
 | `objective_ua` | string | Ціль поточної сесії (UA) |
 | `current_focus` | string | Що зараз у фокусі |
@@ -35,7 +36,8 @@ Handoff Package — це набір артефактів, що передают�
 
 ## Правила handoff.md
 
-- Секція "Context" — коротко хто/що/де/коли (UA).
+- Секція "Context" — коротко хто/що/де/коли (UA), включно з часом сесії (UTC).
+- Секція "Session prompt" — текст промту та як агент його зрозумів.
 - Секція "Goals" — чеклист цілей сесії.
 - Секція "What was done" — чеклист виконаного.
 - Секція "Key decisions" — посилання на ADR файли.

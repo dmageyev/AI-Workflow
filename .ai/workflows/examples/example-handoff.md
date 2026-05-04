@@ -21,8 +21,20 @@
 
 - **Project:** AI-Workflow
 - **Date:** 2026-05-04
+- **Time (UTC):** 12:00
 - **Topic:** bootstrap
 - **Session folder:** .ai/logs/sessions/2026-05-04-1200-bootstrap/
+
+## Session prompt
+
+**Text:**
+
+Bootstrap the full AI-Workflow repository structure in one PR.
+
+**Plan:**
+
+Create the complete `.ai/` directory tree with all required docs, prompts, agents, memory,
+workflows and logs structure. Add CI linting for Markdown and YAML. Write README and llms.txt.
 
 ## Goals
 
@@ -78,6 +90,7 @@
 version: 1
 project: "AI-Workflow"
 date: "2026-05-04"
+time: "12:00"
 owner: "dmageyev"
 
 objective_ua: "Розгортання повної структури репозиторію"
