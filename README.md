@@ -41,12 +41,21 @@
 ```text
 AI-Workflow/
   README.md
+  CONTRIBUTING.md
+  CHANGELOG.md
   llms.txt
   .gitignore
   .markdownlint.json
   .yamllint.yml
 
-  .github/workflows/lint.yml
+  .github/
+    CODEOWNERS
+    workflows/
+      lint.yml
+    ISSUE_TEMPLATE/
+      bug_report.md
+      improvement.md
+    pull_request_template.md
 
   .ai/
     docs/
@@ -60,6 +69,7 @@ AI-Workflow/
       03-handoff-protocol.md
       04-quality-gates.md
       05-agent-requests.md
+      06-adapting-template.md
 
     prompts/
       system/
@@ -90,6 +100,8 @@ AI-Workflow/
       glossary.uk.md
       decisions/
         0001-record-architecture.md
+        0002-ci-session-structure-check.md
+        0003-github-templates.md
       knowledge/
         domain-notes.md
       state/
@@ -105,13 +117,15 @@ AI-Workflow/
         README.md
 ```
 
-- `.ai/docs/` — бачення, архітектура, workflow, протокол передачі
+- `.ai/docs/` — бачення, архітектура, workflow, протокол передачі, адаптація шаблону
 - `.ai/prompts/` — системні промпти, task-промпти, handoff-шаблони
-- `.ai/agents/` — реєстр агентів та ролі
+- `.ai/agents/` — реєстр агентів (з routing) та ролі
 - `.ai/memory/` — глосарій, knowledge base, ADR-рішення, проектний стан
 - `.ai/workflows/` — runbook та приклади
 - `.ai/logs/` — журнали сесій (Handoff Packages)
 - `llms.txt` — опис репозиторію для LLM-інструментів
+- `CONTRIBUTING.md` — правила внеску в репозиторій
+- `CHANGELOG.md` — журнал змін між версіями шаблону
 
 ## Як працювати (операційна модель)
 
@@ -134,8 +148,15 @@ AI-Workflow/
 
 - YAML (`yamllint`)
 - Markdown (`markdownlint`)
+- Структура сесій — наявність `snapshot.yaml` + `handoff.md` у кожній папці сесії
+- Обов'язкові поля `project-state.yaml` (version, date, state.phase, work_items)
 
 Файл workflow: [`.github/workflows/lint.yml`](./.github/workflows/lint.yml)
+
+## Адаптація під свій проєкт
+
+Інструкція для перетворення шаблону на робочий репозиторій власного проєкту:
+[`.ai/docs/06-adapting-template.md`](./.ai/docs/06-adapting-template.md)
 
 ---
 

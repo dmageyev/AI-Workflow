@@ -6,6 +6,10 @@ agents:
       - "Проєктує структуру репозиторію та протоколи"
       - "Веде .ai/docs/01-architecture.md та .ai/docs/03-handoff-protocol.md"
       - "Створює ADR у .ai/memory/decisions/"
+    delegates_to:
+      - "worker"
+      - "researcher"
+    escalates_to: []
 
   - id: "orchestrator"
     role: "Orchestrator"
@@ -14,6 +18,12 @@ agents:
       - "Координує роботу агентів"
       - "Підтримує .ai/memory/state/project-state.yaml"
       - "Забезпечує створення Handoff Package після кожної сесії"
+    delegates_to:
+      - "worker"
+      - "researcher"
+      - "reviewer"
+    escalates_to:
+      - "architect"
 
   - id: "worker"
     role: "Worker"
@@ -21,6 +31,9 @@ agents:
     responsibilities:
       - "Виконує конкретні задачі з work_items"
       - "Продукує артефакти (файли)"
+    delegates_to: []
+    escalates_to:
+      - "orchestrator"
 
   - id: "reviewer"
     role: "Reviewer"
@@ -28,6 +41,10 @@ agents:
     responsibilities:
       - "Перевіряє артефакти за .ai/docs/04-quality-gates.md"
       - "Виносить вердикт approved / rejected"
+    delegates_to: []
+    escalates_to:
+      - "orchestrator"
+      - "architect"
 
   - id: "researcher"
     role: "Researcher"
@@ -35,3 +52,6 @@ agents:
     responsibilities:
       - "Досліджує теми та збирає інформацію"
       - "Зберігає знахідки у .ai/memory/knowledge/"
+    delegates_to: []
+    escalates_to:
+      - "orchestrator"

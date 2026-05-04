@@ -73,3 +73,39 @@ jobs:
             echo "OK: All session folders have snapshot.yaml and handoff.md"
           fi
           exit "$EXIT_CODE"
+
+  project-state-check:
+    name: Project State Validation
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate project-state.yaml required fields
+        shell: bash
+        run: |
+          STATE_FILE=".ai/memory/state/project-state.yaml"
+          EXIT_CODE=0
+
+          if [ ! -f "$STATE_FILE" ]; then
+            echo "ERROR: $STATE_FILE not found"
+            exit 1
+          fi
+
+          for field in "version" "date" "work_items"; do
+            if ! grep -q "^${field}:" "$STATE_FILE"; then
+              echo "ERROR: $STATE_FILE is missing required field: $field"
+              EXIT_CODE=1
+            fi
+          done
+
+          if ! grep -q "phase:" "$STATE_FILE"; then
+            echo "ERROR: $STATE_FILE is missing required field: state.phase"
+            EXIT_CODE=1
+          fi
+
+          if [ "$EXIT_CODE" -eq 0 ]; then
+            echo "OK: $STATE_FILE has all required fields"
+          fi
+          exit "$EXIT_CODE"

@@ -44,14 +44,24 @@
 - `.ai/docs/03-handoff-protocol.md` — handoff protocol specification
 - `.ai/docs/04-quality-gates.md` — quality checklists (session close, handoff, ADR)
 - `.ai/docs/05-agent-requests.md` — how to make requests to agents
+- `.ai/docs/06-adapting-template.md` — how to adapt this template for your own project
 
 ## Workflows
 
 - `.ai/workflows/runbook.uk.md` — operational runbook
-- `.ai/workflows/examples/example-handoff.md` — annotated handoff example
+- `.ai/workflows/examples/example-handoff.md` — reference to real bootstrap session
 
 ## CI
 
-- `.github/workflows/lint.yml` — Markdown lint (markdownlint) + YAML lint (yamllint)
+- `.github/workflows/lint.yml` — Markdown lint + YAML lint + session structure check
+  + project-state validation
 - `.markdownlint.json` — markdownlint config (120-char line limit)
 - `.yamllint.yml` — yamllint config
+
+## Contributing
+
+- `CONTRIBUTING.md` — contribution guidelines for this template repository
+- `CHANGELOG.md` — version history of template changes
+- `.github/CODEOWNERS` — review ownership for `.ai/` directory
+- `.github/ISSUE_TEMPLATE/` — structured issue templates (bug_report, improvement)
+- `.github/pull_request_template.md` — PR quality checklist

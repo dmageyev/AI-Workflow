@@ -1,117 +1,16 @@
 # Приклад Handoff Package
 
-Ця папка ілюструє, як виглядає реальний Handoff Package після завершення сесії.
+Реальні приклади Handoff Package знаходяться у `.ai/logs/sessions/`:
 
-## Структура прикладу
+- **Bootstrap сесія:** [`.ai/logs/sessions/2026-05-04-2200-bootstrap/`](../../../logs/sessions/2026-05-04-2200-bootstrap/)
+  — розгортання повної структури репозиторію.
+- **Improve сесія:** [`.ai/logs/sessions/2026-05-04-2232-improve/`](../../../logs/sessions/2026-05-04-2232-improve/)
+  — покращення шаблону (синхронізація стану, ADR, routing, адаптаційний гайд).
 
-```text
-.ai/logs/sessions/2026-05-04-1200-bootstrap/
-  snapshot.yaml
-  handoff.md
-```
+Кожна папка сесії містить:
 
----
+- `snapshot.yaml` — машинозчитуваний стан проєкту на момент завершення сесії.
+- `handoff.md` — narrative-підсумок: що зроблено, рішення, наступні кроки.
 
-## Приклад: handoff.md
+Шаблони для нових сесій: [`.ai/prompts/handoff/`](../../prompts/handoff/)
 
-```markdown
-# Handoff Package
-
-## Context (UA)
-
-- **Project:** AI-Workflow
-- **Date:** 2026-05-04
-- **Time (UTC):** 12:00
-- **Topic:** bootstrap
-- **Session folder:** .ai/logs/sessions/2026-05-04-1200-bootstrap/
-
-## Session prompt
-
-**Text:**
-
-Bootstrap the full AI-Workflow repository structure in one PR.
-
-**Plan:**
-
-Create the complete `.ai/` directory tree with all required docs, prompts, agents, memory,
-workflows and logs structure. Add CI linting for Markdown and YAML. Write README and llms.txt.
-
-## Goals
-
-- [x] Розгорнути повну структуру репозиторію
-- [x] Додати GitHub Actions lint (Markdown + YAML)
-- [x] Створити README.md, start_promt.md, start_guide.md, create-repo-prompt.md
-
-## What was done
-
-- [x] Створено всі директорії та файли згідно повної структури
-- [x] Налаштовано .github/workflows/lint.yml
-- [x] Написано README.md з описом та інструкцією
-- [x] Написано start_promt.md та start_guide.md (переміщено до .ai/docs/bootstrap/)
-- [x] Заповнено .ai/memory/state/project-state.yaml
-
-## Key decisions
-
-- Decision links: .ai/memory/decisions/0001-record-architecture.md
-
-## Current state
-
-- **Snapshot:** .ai/logs/sessions/2026-05-04-1200-bootstrap/snapshot.yaml
-- **Open questions:** немає
-- **Blockers:** немає
-
-## Next actions (ordered)
-
-1. Розпочати першу реальну сесію з реальними work items
-2. Оновити project-state.yaml з новими задачами
-3. При необхідності — додати нові ADR
-
-## Files changed / created
-
-- README.md
-- .ai/docs/bootstrap/start_promt.md
-- .ai/docs/bootstrap/start_guide.md
-- .ai/docs/bootstrap/create-repo-prompt.md
-- .github/workflows/lint.yml
-- (та всі інші файли структури)
-
-## Acceptance criteria
-
-- [x] Усі файли присутні в репозиторії
-- [x] CI (markdownlint, yamllint) налаштовано
-- [x] Доставлено одним PR
-```
-
----
-
-## Приклад: snapshot.yaml
-
-```yaml
-version: 1
-project: "AI-Workflow"
-date: "2026-05-04"
-time: "12:00"
-owner: "dmageyev"
-
-objective_ua: "Розгортання повної структури репозиторію"
-current_focus: "bootstrap complete"
-
-agents:
-  active:
-    - "orchestrator"
-  available:
-    - "architect"
-    - "worker"
-    - "reviewer"
-    - "researcher"
-
-state:
-  phase: "bootstrap"
-  progress: 100
-
-work_items:
-  - id: "BOOT-001"
-    title: "Create repo structure"
-    status: "done"
-    notes: "Повна структура розгорнута одним PR"
-```
