@@ -86,21 +86,38 @@ jobs:
         shell: bash
         run: |
           STATE_FILE=".ai/memory/state/project-state.yaml"
-          EXIT_CODE=0
 
           if [ ! -f "$STATE_FILE" ]; then
             echo "ERROR: $STATE_FILE not found"
             exit 1
           fi
 
-          for field in "version" "date" "work_items" "phase"; do
-            if ! grep -q "${field}:" "$STATE_FILE"; then
-              echo "ERROR: $STATE_FILE is missing required field: $field"
-              EXIT_CODE=1
-            fi
-          done
+          python3 - <<'PYEOF'
+          import sys
+          import yaml
 
-          if [ "$EXIT_CODE" -eq 0 ]; then
-            echo "OK: $STATE_FILE has all required fields"
-          fi
-          exit "$EXIT_CODE"
+          state_file = ".ai/memory/state/project-state.yaml"
+          with open(state_file, "r", encoding="utf-8") as f:
+              doc = yaml.safe_load(f)
+
+          errors = []
+
+          # Validate top-level required fields
+          for field in ("version", "date", "work_items"):
+              if field not in doc:
+                  errors.append(f"missing top-level field: {field}")
+
+          # Validate nested state.phase specifically
+          state = doc.get("state")
+          if not isinstance(state, dict):
+              errors.append("missing or invalid 'state' block")
+          elif "phase" not in state:
+              errors.append("missing required field: state.phase")
+
+          if errors:
+              for err in errors:
+                  print(f"ERROR: {state_file}: {err}")
+              sys.exit(1)
+
+          print(f"OK: {state_file} has all required fields (including state.phase)")
+          PYEOF
