@@ -31,6 +31,6 @@ work_items:
     notes: ""
 
 knowledge_links:
-  - "/memory/knowledge/domain-notes.md"
+  - ".ai/memory/knowledge/domain-notes.md"
 
 decision_links: []
