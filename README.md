@@ -31,10 +31,10 @@
 
 5. Перша сесія (мінімальний порядок):
    - Онови стан: [`.ai/memory/state/project-state.yaml`](./.ai/memory/state/project-state.yaml)
-   - Створи папку сесії: `.ai/logs/sessions/YYYY-MM-DD-HHmm-topic/`
+   - Створи папку сесії: [`.ai/logs/sessions/`](./.ai/logs/sessions/)`YYYY-MM-DD-HHmm-topic/`
    - Додай туди:
-     - `snapshot.yaml` (за шаблоном `.ai/prompts/handoff/snapshot.template.yaml`)
-     - `handoff.md` (за шаблоном `.ai/prompts/handoff/handoff.template.md`)
+     - `snapshot.yaml` (за шаблоном [`.ai/prompts/handoff/snapshot.template.yaml`](./.ai/prompts/handoff/snapshot.template.yaml))
+     - `handoff.md` (за шаблоном [`.ai/prompts/handoff/handoff.template.md`](./.ai/prompts/handoff/handoff.template.md))
 
 ## Структура репозиторію
 
@@ -117,25 +117,25 @@ AI-Workflow/
         README.md
 ```
 
-- `.ai/docs/` — бачення, архітектура, workflow, протокол передачі, адаптація шаблону
-- `.ai/prompts/` — системні промпти, task-промпти, handoff-шаблони
-- `.ai/agents/` — реєстр агентів (з routing) та ролі
-- `.ai/memory/` — глосарій, knowledge base, ADR-рішення, проектний стан
-- `.ai/workflows/` — runbook та приклади
-- `.ai/logs/` — журнали сесій (Handoff Packages)
-- `llms.txt` — опис репозиторію для LLM-інструментів
-- `CONTRIBUTING.md` — правила внеску в репозиторій
-- `CHANGELOG.md` — журнал змін між версіями шаблону
+- [`.ai/docs/`](./.ai/docs/) — бачення, архітектура, workflow, протокол передачі, адаптація шаблону
+- [`.ai/prompts/`](./.ai/prompts/) — системні промпти, task-промпти, handoff-шаблони
+- [`.ai/agents/`](./.ai/agents/) — реєстр агентів (з routing) та ролі
+- [`.ai/memory/`](./.ai/memory/) — глосарій, knowledge base, ADR-рішення, проектний стан
+- [`.ai/workflows/`](./.ai/workflows/) — runbook та приклади
+- [`.ai/logs/`](./.ai/logs/) — журнали сесій (Handoff Packages)
+- [`llms.txt`](./llms.txt) — опис репозиторію для LLM-інструментів
+- [`CONTRIBUTING.md`](./CONTRIBUTING.md) — правила внеску в репозиторій
+- [`CHANGELOG.md`](./CHANGELOG.md) — журнал змін між версіями шаблону
 
 ## Як працювати (операційна модель)
 
-1. **Orchestrator** читає `.ai/memory/state/project-state.yaml` і останній handoff з `.ai/logs/sessions/`.
+1. **Orchestrator** читає [`.ai/memory/state/project-state.yaml`](./.ai/memory/state/project-state.yaml) і останній handoff з [`.ai/logs/sessions/`](./.ai/logs/sessions/).
 2. Делегує підзадачі агентам (Worker / Researcher / Reviewer).
 3. Кожен результат оформлюється артефактами:
    - зміни в репо
-   - ADR (якщо потрібні рішення) у `.ai/memory/decisions/`
-   - оновлення `project-state.yaml`
-   - новий Handoff Package у `.ai/logs/sessions/YYYY-MM-DD-HHmm-topic/`
+   - ADR (якщо потрібні рішення) у [`.ai/memory/decisions/`](./.ai/memory/decisions/)
+   - оновлення [`.ai/memory/state/project-state.yaml`](./.ai/memory/state/project-state.yaml)
+   - новий Handoff Package у [`.ai/logs/sessions/`](./.ai/logs/sessions/)`YYYY-MM-DD-HHmm-topic/`
 
 ## Quality Gates
 

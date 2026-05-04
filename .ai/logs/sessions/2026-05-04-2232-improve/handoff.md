@@ -50,12 +50,12 @@ Researcher провів аналіз репозиторію. Виявлено 10
 ## Key decisions
 
 - Decision links:
-  - `.ai/memory/decisions/0002-ci-session-structure-check.md`
-  - `.ai/memory/decisions/0003-github-templates.md`
+  - [`memory/decisions/0002-ci-session-structure-check.md`](../../memory/decisions/0002-ci-session-structure-check.md)
+  - [`memory/decisions/0003-github-templates.md`](../../memory/decisions/0003-github-templates.md)
 
 ## Current state
 
-- **Snapshot:** `.ai/logs/sessions/2026-05-04-2232-improve/snapshot.yaml`
+- **Snapshot:** [`logs/sessions/2026-05-04-2232-improve/snapshot.yaml`](snapshot.yaml)
 - **Open questions:** немає
 - **Blockers:** немає
 

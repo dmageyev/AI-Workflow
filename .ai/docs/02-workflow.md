@@ -6,8 +6,8 @@
 
 ### 1. Відновлення контексту (Context Restore)
 
-- Orchestrator читає `.ai/memory/state/project-state.yaml`.
-- Orchestrator читає останній handoff у `.ai/logs/sessions/` (сортування за назвою папки).
+- Orchestrator читає [`memory/state/project-state.yaml`](../memory/state/project-state.yaml).
+- Orchestrator читає останній handoff у [`logs/sessions/`](../logs/sessions/) (сортування за назвою папки).
 - Якщо є open questions або blockers — вирішити перед продовженням.
 
 ### 2. Планування (Planning)
@@ -20,15 +20,15 @@
 
 - Кожен агент виконує свої задачі та створює артефакти.
 - Reviewer перевіряє ключові артефакти.
-- Усі нові рішення фіксуються ADR у `.ai/memory/decisions/`.
+- Усі нові рішення фіксуються ADR у [`memory/decisions/`](../memory/decisions/).
 
 ### 4. Завершення сесії (Session Close)
 
-- Оновити статуси work items у `project-state.yaml`.
+- Оновити статуси work items у [`memory/state/project-state.yaml`](../memory/state/project-state.yaml).
 - Створити Handoff Package:
-  - `.ai/logs/sessions/YYYY-MM-DD-HHmm-topic/snapshot.yaml`
-  - `.ai/logs/sessions/YYYY-MM-DD-HHmm-topic/handoff.md`
-- Перевірити quality gates (`.ai/docs/04-quality-gates.md`).
+  - [`logs/sessions/`](../logs/sessions/)`YYYY-MM-DD-HHmm-topic/snapshot.yaml`
+  - [`logs/sessions/`](../logs/sessions/)`YYYY-MM-DD-HHmm-topic/handoff.md`
+- Перевірити quality gates ([`docs/04-quality-gates.md`](04-quality-gates.md)).
 - Закомітити всі зміни.
 
 ## Правила іменування папок сесій

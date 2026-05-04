@@ -8,8 +8,8 @@
 
 ## Завдання для агента
 
-1. Прочитай `.ai/memory/state/project-state.yaml`.
-2. Прочитай останній handoff у `.ai/logs/sessions/`.
+1. Прочитай [`memory/state/project-state.yaml`](../../memory/state/project-state.yaml).
+2. Прочитай останній handoff у [`logs/sessions/`](../../logs/sessions/).
 3. Сформуй план у вигляді списку work items:
    - `id`: унікальний ідентифікатор (наприклад, `FEAT-001`)
    - `title`: назва задачі

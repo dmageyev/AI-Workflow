@@ -13,7 +13,7 @@
 ## Пов'язані issues / ADR
 
 - Issue: #
-- ADR: `.ai/memory/decisions/`
+- ADR: [`.ai/memory/decisions/`](./.ai/memory/decisions/)
 
 ## Чекліст
 

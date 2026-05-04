@@ -4,12 +4,12 @@
 
 - **Артефакт для review:** `<шлях до файлу або папки>`
 - **Тип review:** `[ ] handoff package  [ ] ADR  [ ] документ  [ ] код`
-- **Чеклист:** `.ai/docs/04-quality-gates.md`
+- **Чеклист:** [`docs/04-quality-gates.md`](../../docs/04-quality-gates.md)
 
 ## Завдання для агента (Reviewer)
 
 1. Відкрий артефакт.
-2. Перевір за відповідним чеклістом із `.ai/docs/04-quality-gates.md`.
+2. Перевір за відповідним чеклістом із [`docs/04-quality-gates.md`](../../docs/04-quality-gates.md).
 3. Зафіксуй усі знайдені проблеми (файл + опис).
 4. Винеси вердикт: `approved` або `rejected`.
 

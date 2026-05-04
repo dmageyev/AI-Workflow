@@ -13,7 +13,7 @@ Worker — виконує конкретні задачі, призначені 
 
 ## Системний промпт
 
-`.ai/prompts/system/agent.worker.system.md`
+[`prompts/system/agent.worker.system.md`](../../prompts/system/agent.worker.system.md)
 
 ## Коли залучати
 

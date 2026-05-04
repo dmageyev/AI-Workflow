@@ -16,9 +16,9 @@
 
 ## Decision
 
-Додати окремий CI job `session-structure` у `.github/workflows/lint.yml`, який:
+Додати окремий CI job `session-structure` у [`.github/workflows/lint.yml`](../../../.github/workflows/lint.yml), який:
 
-1. Сканує всі піддиректорії `.ai/logs/sessions/`.
+1. Сканує всі піддиректорії [`.ai/logs/sessions/`](../../logs/sessions/).
 2. Перевіряє наявність `snapshot.yaml` та `handoff.md` у кожній з них.
 3. Завершується з `exit 1`, якщо хоча б одна папка неповна.
 4. Пропускає перевірку, якщо директорія `sessions/` ще не існує (graceful skip).

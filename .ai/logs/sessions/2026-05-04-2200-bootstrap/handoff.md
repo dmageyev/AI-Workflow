@@ -46,11 +46,11 @@
 
 ## Key decisions
 
-- Decision links: `.ai/memory/decisions/0001-record-architecture.md`
+- Decision links: [`memory/decisions/0001-record-architecture.md`](../../memory/decisions/0001-record-architecture.md)
 
 ## Current state
 
-- **Snapshot:** `.ai/logs/sessions/2026-05-04-2200-bootstrap/snapshot.yaml`
+- **Snapshot:** [`logs/sessions/2026-05-04-2200-bootstrap/snapshot.yaml`](snapshot.yaml)
 - **Open questions:**
   - Яку конкретну задачу буде вирішувати перша реальна сесія після bootstrap?
 - **Blockers:**

@@ -17,7 +17,7 @@
 ### Institutional memory
 
 Накопичені знання проєкту, які не залежать від конкретного агента чи сесії.
-Зберігаються у `.ai/memory/knowledge/`, `.ai/memory/decisions/`, `.ai/memory/glossary.uk.md`.
+Зберігаються у [`memory/knowledge/`](.), [`memory/decisions/`](../decisions/), [`memory/glossary.uk.md`](../glossary.uk.md).
 
 ## Нотатки для поповнення
 
@@ -50,7 +50,7 @@
 ### Рекомендована послідовність роботи з агентом
 
 1. Прочитай `project-state.yaml` → обери task зі статусом `todo`.
-2. Прочитай останній handoff в `.ai/logs/sessions/` → відновись у контексті.
+2. Прочитай останній handoff в [`logs/sessions/`](../../logs/sessions/) → відновись у контексті.
 3. Виконай задачу.
 4. Оновити `project-state.yaml` (status → `done`, прогрес).
 5. Створи папку сесії та handoff package.

@@ -17,13 +17,13 @@
 
 Додати до репозиторію:
 
-1. `.github/ISSUE_TEMPLATE/` з двома шаблонами:
+1. [`.github/ISSUE_TEMPLATE/`](../../../.github/ISSUE_TEMPLATE/) з двома шаблонами:
    - `bug_report.md` — звіт про помилку у шаблоні.
    - `improvement.md` — пропозиція покращення workflow.
-2. `.github/pull_request_template.md` — стандартний чекліст для PR:
+2. [`.github/pull_request_template.md`](../../../.github/pull_request_template.md) — стандартний чекліст для PR:
    - Тип зміни (docs / workflow / agent prompt / CI).
    - Чекліст якості: lint проходить, handoff оформлено, ADR додано (якщо потрібно).
-3. `.github/CODEOWNERS` — визначає `@dmageyev` власником усіх файлів `.ai/`.
+3. [`.github/CODEOWNERS`](../../../.github/CODEOWNERS) — визначає `@dmageyev` власником усіх файлів `.ai/`.
 
 ## Consequences
 
