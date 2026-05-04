@@ -93,17 +93,12 @@ jobs:
             exit 1
           fi
 
-          for field in "version" "date" "work_items"; do
-            if ! grep -q "^${field}:" "$STATE_FILE"; then
+          for field in "version" "date" "work_items" "phase"; do
+            if ! grep -q "${field}:" "$STATE_FILE"; then
               echo "ERROR: $STATE_FILE is missing required field: $field"
               EXIT_CODE=1
             fi
           done
-
-          if ! grep -q "phase:" "$STATE_FILE"; then
-            echo "ERROR: $STATE_FILE is missing required field: state.phase"
-            EXIT_CODE=1
-          fi
 
           if [ "$EXIT_CODE" -eq 0 ]; then
             echo "OK: $STATE_FILE has all required fields"
