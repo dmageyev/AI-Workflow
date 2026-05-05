@@ -113,8 +113,8 @@ AI-Workflow/
         example-handoff.md
 
     logs/
+      README.md
       sessions/
-        README.md
 ```
 
 - [`.ai/docs/`](./.ai/docs/) — бачення, архітектура, workflow, протокол передачі, адаптація шаблону

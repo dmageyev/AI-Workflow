@@ -17,12 +17,12 @@
 
 Прийнято наступну структуру:
 
-- [`docs/`](../docs/) — документація архітектури та протоколів
-- [`prompts/`](../prompts/) — системні та task-промпти для агентів
-- [`agents/`](../agents/) — реєстр та описи ролей
-- [`memory/`](../memory/) — довготривала пам'ять (glossary, knowledge, decisions, state)
-- [`workflows/`](../workflows/) — runbook та приклади
-- [`logs/sessions/`](../../logs/sessions/) — журнал сесій (Handoff Packages)
+- [`.ai/docs/`](../../docs/) — документація архітектури та протоколів
+- [`.ai/prompts/`](../../prompts/) — системні та task-промпти для агентів
+- [`.ai/agents/`](../../agents/) — реєстр та описи ролей
+- [`.ai/memory/`](../../memory/) — довготривала пам'ять (glossary, knowledge, decisions, state)
+- [`.ai/workflows/`](../../workflows/) — runbook та приклади
+- [`.ai/logs/sessions/`](../../logs/sessions/) — журнал сесій (Handoff Packages)
 
 Handoff Package складається з `snapshot.yaml` (YAML state) + `handoff.md` (narrative summary).
 

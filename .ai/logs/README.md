@@ -29,4 +29,4 @@
 
 ## Протокол handoff
 
-Детальний опис: [`docs/03-handoff-protocol.md`](../../docs/03-handoff-protocol.md)
+Детальний опис: [`.ai/docs/03-handoff-protocol.md`](../docs/03-handoff-protocol.md)

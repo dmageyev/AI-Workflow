@@ -66,8 +66,8 @@
     examples/
       example-handoff.md  ← посилання на реальну сесію як приклад
   logs/
-    sessions/
-      README.md           ← опис формату сесій (замість .gitkeep)
+    README.md               ← опис формату сесій
+    sessions/               ← папки сесій (YYYY-MM-DD-HHmm-topic/)
 
 Додатково у корені репо:
   README.md               ← опис репо та інструкція користування
@@ -102,7 +102,7 @@ Definition of Done:
 ## Після виконання промпту
 
 1. Перевір, що всі файли зі структури вище присутні.
-2. Переконайся, що CI проходить (Markdown lint + YAML lint).
+2. Переконайся, що CI проходить (Markdown lint + YAML lint + session-structure + project-state-check).
 3. Запусти першу реальну сесію:
    - Заповни `.ai/memory/state/project-state.yaml` реальними work items.
    - Створи першу папку сесії: `.ai/logs/sessions/YYYY-MM-DD-HHmm-bootstrap/`

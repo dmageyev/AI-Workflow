@@ -1,12 +1,9 @@
 # CODEOWNERS
-# Власники критичних файлів. Їх review обов'язковий для змін у цих шляхах.
+# Власники файлів. Їх review запитується автоматично для змін у цих шляхах.
+# Примітка: обов'язковість review залежить від налаштувань branch protection rules.
 
-# Канонічний стан проєкту та архітектурні рішення
-.ai/memory/state/project-state.yaml @dmageyev
-.ai/memory/decisions/ @dmageyev
-
-# Протоколи та документація
-.ai/docs/ @dmageyev
+# Весь .ai/ tree
+.ai/ @dmageyev
 
 # CI конфігурація
 .github/workflows/ @dmageyev
