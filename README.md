@@ -107,6 +107,7 @@ AI-Workflow/
         0001-record-architecture.md
         0002-ci-session-structure-check.md
         0003-github-templates.md
+        0004-root-files-consolidation.md
       knowledge/
         README.md
         domain-notes.md
@@ -127,7 +128,6 @@ AI-Workflow/
     STATUS.md
     ROADMAP.md
     VERSION
-    llms.txt
 ```
 
 - [`.ai/docs/`](./.ai/docs/) — бачення, архітектура, workflow, протокол передачі, адаптація шаблону
