@@ -8,6 +8,11 @@ Thumbs.db
 *.swp
 *.swo
 
+# Secrets (never commit)
+.env
+*.key
+*.pem
+
 # Logs (тимчасові файли, не сесії)
 *.log
 

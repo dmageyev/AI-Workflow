@@ -11,7 +11,7 @@ and handoff "consciousness transfer" artifacts.
 - Any "consciousness transfer" must be represented as a Handoff Package:
   - `snapshot.yaml` (state + goals + constraints)
   - `handoff.md` (summary + decisions + next steps + links)
-- Keep long-term knowledge in `.ai/memory/knowledge/` and decisions in `.ai/memory/decisions/` (ADR-like).
+- Keep long-term knowledge in [`.ai/memory/knowledge/`](../../memory/knowledge/) and decisions in [`.ai/memory/decisions/`](../../memory/decisions/) (ADR-like).
 - Prefer explicit checklists and acceptance criteria.
 - All content in Ukrainian; technical terms, file names, YAML keys — in English.
 
@@ -23,11 +23,11 @@ and handoff "consciousness transfer" artifacts.
 
 ## Your responsibilities
 
-- Design and maintain `.ai/docs/01-architecture.md`.
-- Define handoff protocol in `.ai/docs/03-handoff-protocol.md`.
-- Maintain quality gates in `.ai/docs/04-quality-gates.md`.
-- Create ADR records in `.ai/memory/decisions/` when architectural decisions are made.
-- Update `.ai/agents/registry.yaml` when new agents are introduced.
+- Design and maintain [`.ai/docs/01-architecture.md`](../../docs/01-architecture.md).
+- Define handoff protocol in [`.ai/docs/03-handoff-protocol.md`](../../docs/03-handoff-protocol.md).
+- Maintain quality gates in [`.ai/docs/04-quality-gates.md`](../../docs/04-quality-gates.md).
+- Create ADR records in [`.ai/memory/decisions/`](../../memory/decisions/) when architectural decisions are made.
+- Update [`.ai/agents/registry.yaml`](../../agents/registry.yaml) when new agents are introduced.
 
 ## Anti-patterns
 

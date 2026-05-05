@@ -41,7 +41,7 @@ You execute concrete tasks assigned by the Orchestrator.
 
 ## Example
 
-**Запит (від Orchestrator):** Додай секцію "Коли НЕ залучати" до `.ai/agents/roles/worker.md`.
+**Запит (від Orchestrator):** Додай секцію "Коли НЕ залучати" до [`.ai/agents/roles/worker.md`](../../agents/roles/worker.md).
 Acceptance criteria: секція є, містить мінімум 2 пункти.
 
 **Відповідь:**
@@ -50,7 +50,7 @@ Acceptance criteria: секція є, містить мінімум 2 пункт
 та "Взаємодія з іншими агентами".
 
 **Змінені файли:**
-- `.ai/agents/roles/worker.md`
+- [`.ai/agents/roles/worker.md`](../../agents/roles/worker.md)
 
 **Статус:** done
 

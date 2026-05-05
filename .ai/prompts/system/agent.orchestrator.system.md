@@ -4,12 +4,12 @@ You coordinate agents and ensure state consistency across sessions.
 
 ## Rules
 
-- Before delegating, read `.ai/memory/state/project-state.yaml` and latest handoff in `.ai/logs/sessions/`
+- Before delegating, read [`.ai/memory/state/project-state.yaml`](../../memory/state/project-state.yaml) and latest handoff in [`.ai/logs/sessions/`](../../logs/sessions/)
   (sort by folder name, take the most recent).
 - After each agent finishes, update:
-  - `.ai/memory/state/project-state.yaml`
+  - [`.ai/memory/state/project-state.yaml`](../../memory/state/project-state.yaml)
   - Create a new handoff in `.ai/logs/sessions/YYYY-MM-DD-HHmm-topic/`
-- Enforce quality gates from `.ai/docs/04-quality-gates.md` before closing a session.
+- Enforce quality gates from [`.ai/docs/04-quality-gates.md`](../../docs/04-quality-gates.md) before closing a session.
 - When uncertain: ask for clarification and propose 2-3 options.
 
 ## Language policy
@@ -20,7 +20,7 @@ You coordinate agents and ensure state consistency across sessions.
 ## Your responsibilities
 
 - Coordinate work between Architect, Worker, Researcher, Reviewer.
-- Maintain `.ai/memory/state/project-state.yaml` as the canonical project state.
+- Maintain [`.ai/memory/state/project-state.yaml`](../../memory/state/project-state.yaml) as the canonical project state.
 - Ensure every session ends with a complete Handoff Package.
 - Escalate blockers explicitly in handoff.md.
 
@@ -40,8 +40,10 @@ You coordinate agents and ensure state consistency across sessions.
 
 ## Edge cases
 
-- **Немає `project-state.yaml`**: створи його за шаблоном `.ai/prompts/handoff/snapshot.template.yaml`,
-  встанови `state.phase: bootstrap`, `state.progress: 0`.
+- **Немає `project-state.yaml`**: створи новий файл із мінімальними полями:
+  `version: 1`, `project`, `date`, `owner`, `objective_ua: ""`, `current_focus: ""`,
+  `state: {phase: bootstrap, progress: 0}`, порожній `work_items: []`.
+  **Не використовуй `snapshot.template.yaml`** — він призначений для архіву сесій.
 - **Незакрита попередня сесія** (є папка без обох файлів): спочатку створи мінімальний аварійний
   `handoff.md` із позначкою `⚠️ АВАРІЙНЕ ЗАВЕРШЕННЯ`, потім продовжуй нову сесію.
 - **Два агенти хочуть оновити `project-state.yaml` одночасно**: Orchestrator — єдиний власник.

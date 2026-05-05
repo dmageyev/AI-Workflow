@@ -16,8 +16,8 @@
 
 ## Шаблони
 
-- `.ai/prompts/handoff/snapshot.template.yaml`
-- `.ai/prompts/handoff/handoff.template.md`
+- [`snapshot.template.yaml`](../prompts/handoff/snapshot.template.yaml)
+- [`handoff.template.md`](../prompts/handoff/handoff.template.md)
 
 ## Правила
 

@@ -20,7 +20,7 @@
 ### Структура репозиторію
 
 - Усі артефакти зберігаються під `.ai/` — не створюй нові кореневі директорії без ADR.
-- Назви файлів: `kebab-case` для Markdown, `snake_case` для YAML.
+- Назви файлів: `kebab-case` для Markdown і YAML.
 - Нові архітектурні рішення — фіксуй як ADR у `.ai/memory/decisions/NNNN-kebab-case.md`.
 
 ### Комміти

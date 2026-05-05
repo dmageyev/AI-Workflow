@@ -54,7 +54,7 @@
 Остання сесія: .ai/logs/sessions/2026-05-05-0200-improvements/
 
 **Завдання:** Додати секцію `## Anti-patterns` до кожного з 5 системних промптів
-у `.ai/prompts/system/`. Секція має містити мінімум 3 пункти.
+у [`.ai/prompts/system/`](../system/). Секція має містити мінімум 3 пункти.
 
 **Acceptance criteria:**
 - [ ] Усі 5 файлів містять секцію `## Anti-patterns`
@@ -62,9 +62,9 @@
 - [ ] Пункти відповідають ролі агента (не є копіями між файлами)
 
 **Артефакти:**
-- `.ai/prompts/system/agent.architect.system.md`
-- `.ai/prompts/system/agent.orchestrator.system.md`
-- `.ai/prompts/system/agent.worker.system.md`
-- `.ai/prompts/system/agent.reviewer.system.md`
-- `.ai/prompts/system/agent.researcher.system.md`
+- [`agent.architect.system.md`](../system/agent.architect.system.md)
+- [`agent.orchestrator.system.md`](../system/agent.orchestrator.system.md)
+- [`agent.worker.system.md`](../system/agent.worker.system.md)
+- [`agent.reviewer.system.md`](../system/agent.reviewer.system.md)
+- [`agent.researcher.system.md`](../system/agent.researcher.system.md)
 ```

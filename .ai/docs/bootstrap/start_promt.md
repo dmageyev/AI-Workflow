@@ -20,11 +20,11 @@
 
 1. Перевір структуру репозиторію. Якщо чогось не вистачає — створити потрібні файли/папки.
 2. Створити та/або оновити:
-   - `.ai/memory/state/project-state.yaml` (актуальний стан)
-   - `.ai/agents/registry.yaml` (агенти та їх ролі)
-   - `.ai/docs/01-architecture.md` (архітектура)
-   - `.ai/docs/03-handoff-protocol.md` (протокол handoff)
-   - `.ai/docs/04-quality-gates.md` (чеклісти)
+   - [`.ai/memory/state/project-state.yaml`](../../memory/state/project-state.yaml) (актуальний стан)
+   - [`.ai/agents/registry.yaml`](../../agents/registry.yaml) (агенти та їх ролі)
+   - [`.ai/docs/01-architecture.md`](../01-architecture.md) (архітектура)
+   - [`.ai/docs/03-handoff-protocol.md`](../03-handoff-protocol.md) (протокол handoff)
+   - [`.ai/docs/04-quality-gates.md`](../04-quality-gates.md) (чеклісти)
 3. Пояснити, як запускати першу сесію і як оформлювати Handoff Package.
 
 Обов'язково (Definition of Done):
