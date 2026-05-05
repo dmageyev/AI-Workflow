@@ -4,7 +4,7 @@ date: "2026-05-05"
 owner: "dmageyev"
 
 objective_ua: "Покращення шаблону репозиторію для мультиагентної роботи"
-current_focus: "ready for merge"
+current_focus: "review in progress"
 
 agents:
   active:
@@ -16,8 +16,8 @@ agents:
     - "researcher"
 
 state:
-  phase: "ready-for-merge"
-  progress: 100
+  phase: "review"
+  progress: 90
 
 constraints:
   language_policy: "UA content, EN technical terms"

@@ -68,6 +68,7 @@
   logs/
     README.md               ← опис формату сесій
     sessions/               ← папки сесій (YYYY-MM-DD-HHmm-topic/)
+      .gitkeep              ← зберігає порожню папку sessions/ в Git
 
 Додатково у корені репо:
   README.md               ← опис репо та інструкція користування

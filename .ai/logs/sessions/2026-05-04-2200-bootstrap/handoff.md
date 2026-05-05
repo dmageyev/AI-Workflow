@@ -94,7 +94,7 @@
 - `.ai/memory/glossary.uk.md`
 - `.ai/workflows/runbook.uk.md`
 - `.ai/workflows/examples/example-handoff.md`
-- `.ai/logs/sessions/README.md`
+- `.ai/logs/README.md`
 - `.github/workflows/lint.yml`
 - `README.md`
 - `llms.txt`
