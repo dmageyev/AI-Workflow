@@ -33,6 +33,28 @@
   notes: "Опис або контекст"
 ```
 
+### Правило архівації після milestone
+
+Після завершення кожного milestone:
+
+1. Перенеси всі done-items з `work_items` (крім останнього) до
+   [`.ai/memory/state/work-items-archive.yaml`](../memory/state/work-items-archive.yaml).
+2. Додай новий блок у `milestones`:
+
+   ```yaml
+   - id: "your-milestone-name"
+     closed_at: "YYYY-MM-DD"
+     items:
+       - id: "FEAT-001"
+         title: "..."
+         status: "done"
+         notes: "..."
+   ```
+
+3. Останній done-item залишається у `work_items` як breadcrumb
+   (орієнтир для наступного агента, звідки продовжувати).
+4. CI (`work-items-archive-check`) автоматично перевіряє, що всі items у архіві мають `status: done`.
+
 ## Крок 3. Оновлення глосарію
 
 Файл: [`.ai/memory/glossary.uk.md`](../memory/glossary.uk.md)

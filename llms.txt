@@ -27,7 +27,8 @@
 
 ## Project state (canonical)
 
-- `.ai/memory/state/project-state.yaml` — current phase, progress, active and archived work items
+- `.ai/memory/state/project-state.yaml` — current phase, progress, active work items (breadcrumb of last done)
+- `.ai/memory/state/work-items-archive.yaml` — archived done items grouped by milestone
 - `.ai/logs/sessions/` — session history (Handoff Packages: snapshot.yaml + handoff.md)
 - `.ai/logs/README.md` — format rules and naming convention for session folders
 
@@ -55,7 +56,8 @@
 ## CI
 
 - `.github/workflows/lint.yml` — Markdown lint + YAML lint + session structure check
-  + project-state validation
+  + project-state validation + work-items-archive validation + snapshot content check
+  + ADR filename check
 - `.markdownlint.json` — markdownlint config (120-char line limit)
 - `.yamllint.yml` — yamllint config
 

@@ -106,6 +106,7 @@ AI-Workflow/
         domain-notes.md
       state/
         project-state.yaml
+        work-items-archive.yaml
 
     workflows/
       runbook.uk.md
@@ -150,7 +151,10 @@ AI-Workflow/
 - YAML (`yamllint`)
 - Markdown (`markdownlint`)
 - Структура сесій — наявність `snapshot.yaml` + `handoff.md` у кожній папці сесії
+- Вміст `snapshot.yaml` — обов'язкові поля
 - Обов'язкові поля `project-state.yaml` (version, date, state.phase, work_items)
+- Структура та статуси `work-items-archive.yaml`
+- Іменування ADR файлів (формат `NNNN-kebab-case-title.md`)
 
 Файл workflow: [`.github/workflows/lint.yml`](./.github/workflows/lint.yml)
 

@@ -116,19 +116,12 @@ jobs:
           elif "phase" not in state:
               errors.append("missing required field: state.phase")
 
-          # Validate archived_items items all have status: done
-          archived = doc.get("archived_items", [])
-          if not isinstance(archived, list):
-              errors.append("'archived_items' must be a list")
-          else:
-              for item in archived:
-                  if not isinstance(item, dict):
-                      errors.append("each item in 'archived_items' must be a mapping")
-                  elif item.get("status") != "done":
-                      errors.append(
-                          f"archived_items[{item.get('id', '?')}]: "
-                          f"status must be 'done', got '{item.get('status')}'"
-                      )
+          # archived_items must NOT appear in project-state.yaml (moved to work-items-archive.yaml)
+          if "archived_items" in doc:
+              errors.append(
+                  "'archived_items' must not be in project-state.yaml; "
+                  "use .ai/memory/state/work-items-archive.yaml instead"
+              )
 
           if errors:
               for err in errors:
@@ -136,6 +129,74 @@ jobs:
               sys.exit(1)
 
           print(f"OK: {state_file} has all required fields (including state.phase)")
+          PYEOF
+
+  work-items-archive-check:
+    name: Work Items Archive Validation
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate work-items-archive.yaml structure
+        shell: bash
+        run: |
+          ARCHIVE_FILE=".ai/memory/state/work-items-archive.yaml"
+
+          if [ ! -f "$ARCHIVE_FILE" ]; then
+            echo "INFO: $ARCHIVE_FILE does not exist, skipping check."
+            exit 0
+          fi
+
+          export ARCHIVE_FILE
+          python3 - <<'PYEOF'
+          import os
+          import sys
+          import yaml
+
+          archive_file = os.environ["ARCHIVE_FILE"]
+          with open(archive_file, "r", encoding="utf-8") as f:
+              doc = yaml.safe_load(f)
+
+          errors = []
+
+          if not isinstance(doc, dict):
+              print(f"ERROR: {archive_file}: root must be a YAML mapping")
+              sys.exit(1)
+
+          milestones = doc.get("milestones", [])
+          if not isinstance(milestones, list):
+              errors.append("'milestones' must be a list")
+          else:
+              for ms in milestones:
+                  if not isinstance(ms, dict):
+                      errors.append("each milestone must be a mapping")
+                      continue
+                  ms_id = ms.get("id", "?")
+                  for field in ("id", "closed_at", "items"):
+                      if field not in ms:
+                          errors.append(f"milestone '{ms_id}': missing field '{field}'")
+                  items = ms.get("items", [])
+                  if not isinstance(items, list):
+                      errors.append(f"milestone '{ms_id}': 'items' must be a list")
+                  else:
+                      for item in items:
+                          if not isinstance(item, dict):
+                              errors.append(f"milestone '{ms_id}': each item must be a mapping")
+                          elif item.get("status") != "done":
+                              errors.append(
+                                  f"milestone '{ms_id}', item '{item.get('id', '?')}': "
+                                  f"status must be 'done', got '{item.get('status')}'"
+                              )
+
+          if errors:
+              for err in errors:
+                  print(f"ERROR: {archive_file}: {err}")
+              sys.exit(1)
+
+          total = sum(len(ms.get("items", [])) for ms in milestones)
+          print(f"OK: {archive_file} is valid ({len(milestones)} milestones, {total} items)")
           PYEOF
 
   snapshot-content-check:
