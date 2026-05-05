@@ -88,6 +88,7 @@ AI-Workflow/
         debug.task.md
         delegate.task.md
         research.task.md
+        test.task.md
       handoff/
         handoff.template.md
         snapshot.template.yaml

@@ -67,4 +67,4 @@ PR #1 перебуває в draft-статусі. Завдання — заве�
 - [x] CI проходить без помилок
 - [x] `project-state.yaml` phase=ready-for-merge, progress=100
 - [x] Handoff Package для сесії "завершити" збережено
-- [x] PR #1 готовий до review (draft → ready for review)
+- [ ] PR #1 готовий до review (draft → ready for review)

@@ -50,7 +50,7 @@
     06-adapting-template.md ← як адаптувати шаблон під свій проєкт
   prompts/
     system/               ← системні промпти: architect, orchestrator, worker, reviewer, researcher
-    tasks/                ← task-промпти: create-plan, implement-feature, review, debug
+    tasks/                ← task-промпти: create-plan, implement-feature, review, debug, delegate, research, test
     handoff/              ← шаблони: handoff.template.md, snapshot.template.yaml
   agents/
     registry.yaml         ← реєстр агентів (з полями delegates_to та escalates_to)

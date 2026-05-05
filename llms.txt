@@ -23,7 +23,7 @@
 
 - `.ai/agents/registry.yaml` — agent registry (roles, prompt files)
 - `.ai/prompts/system/` — system prompts for all roles
-- `.ai/prompts/tasks/` — task prompts (create-plan, implement-feature, review, debug)
+- `.ai/prompts/tasks/` — task prompts (create-plan, implement-feature, review, debug, delegate, research, test)
 - `.ai/prompts/handoff/` — handoff package templates
 
 ## Project state (canonical)

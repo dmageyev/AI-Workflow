@@ -395,6 +395,8 @@ jobs:
 
           # Match [text](path) — only relative (non-http) links
           LINK_RE = re.compile(r'\[(?:[^\]]*)\]\(([^)]+)\)')
+          # Match reference-style link definitions: [label]: path
+          REF_RE = re.compile(r'^\[(?:[^\]]+)\]:\s+(\S+)', re.MULTILINE)
           errors = []
 
           for root, dirs, files in os.walk("."):
@@ -423,6 +425,20 @@ jobs:
                       )
                       if not os.path.exists(target):
                           errors.append(f"{fpath}: dead link → '{raw}'")
+                  # Also check reference-style link definitions
+                  for match in REF_RE.finditer(content):
+                      raw = match.group(1)
+                      if raw.startswith(("http://", "https://", "mailto:", "#", "<")):
+                          continue
+                      path_part = raw.split("#")[0]
+                      if not path_part:
+                          continue
+                      path_part = urllib.parse.unquote(path_part)
+                      target = os.path.normpath(
+                          os.path.join(os.path.dirname(fpath), path_part)
+                      )
+                      if not os.path.exists(target):
+                          errors.append(f"{fpath}: dead reference link → '{raw}'")
 
           if errors:
               for err in errors:
