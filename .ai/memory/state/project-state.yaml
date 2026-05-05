@@ -1,10 +1,10 @@
-version: 2
+version: 3
 project: "AI-Workflow"
-date: "2026-05-04"
+date: "2026-05-05"
 owner: "dmageyev"
 
 objective_ua: "Покращення шаблону репозиторію для мультиагентної роботи"
-current_focus: "improvements complete"
+current_focus: "ready for merge"
 
 agents:
   active:
@@ -16,7 +16,7 @@ agents:
     - "researcher"
 
 state:
-  phase: "improve"
+  phase: "ready-for-merge"
   progress: 100
 
 constraints:
@@ -105,6 +105,14 @@ work_items:
     title: "Add project-state.yaml CI validation"
     status: "done"
     notes: "project-state-check job додано до .github/workflows/lint.yml"
+  - id: "DONE-001"
+    title: "Create final session log for завершити"
+    status: "done"
+    notes: ".ai/logs/sessions/2026-05-05-0055-complete/ створено"
+  - id: "DONE-002"
+    title: "Update project-state.yaml to ready-for-merge"
+    status: "done"
+    notes: "Фаза змінена з improve на ready-for-merge, version 2→3"
 
 knowledge_links:
   - ".ai/memory/knowledge/domain-notes.md"
