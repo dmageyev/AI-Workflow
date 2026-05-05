@@ -110,9 +110,9 @@ work_items:
     status: "done"
     notes: ".ai/logs/sessions/2026-05-05-0055-complete/ створено"
   - id: "DONE-002"
-    title: "Update project-state.yaml to ready-for-merge"
+    title: "Reset project-state.yaml to review phase"
     status: "done"
-    notes: "Фаза змінена з improve на ready-for-merge, version 2→3"
+    notes: "Фаза скориговна з ready-for-merge на review (90%), version 3; PR ще в draft"
 
 knowledge_links:
   - ".ai/memory/knowledge/domain-notes.md"
