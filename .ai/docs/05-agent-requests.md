@@ -14,15 +14,15 @@
 
 ### 1. System prompt (завантажується один раз на початку сесії)
 
-Обери системний промпт з [`prompts/system/`](../prompts/system/) відповідно до ролі агента.
+Обери системний промпт з [`.ai/prompts/system/`](../prompts/system/) відповідно до ролі агента.
 
 | Агент | Файл системного промпту |
 | ----- | ----------------------- |
-| Architect | [`prompts/system/architect.system.md`](../prompts/system/architect.system.md) |
-| Orchestrator | [`prompts/system/orchestrator.system.md`](../prompts/system/orchestrator.system.md) |
-| Worker | [`prompts/system/agent.worker.system.md`](../prompts/system/agent.worker.system.md) |
-| Reviewer | [`prompts/system/agent.reviewer.system.md`](../prompts/system/agent.reviewer.system.md) |
-| Researcher | [`prompts/system/agent.researcher.system.md`](../prompts/system/agent.researcher.system.md) |
+| Architect | [`.ai/prompts/system/architect.system.md`](../prompts/system/architect.system.md) |
+| Orchestrator | [`.ai/prompts/system/orchestrator.system.md`](../prompts/system/orchestrator.system.md) |
+| Worker | [`.ai/prompts/system/agent.worker.system.md`](../prompts/system/agent.worker.system.md) |
+| Reviewer | [`.ai/prompts/system/agent.reviewer.system.md`](../prompts/system/agent.reviewer.system.md) |
+| Researcher | [`.ai/prompts/system/agent.researcher.system.md`](../prompts/system/agent.researcher.system.md) |
 
 ### 2. Context (контекст — для кожного запиту)
 
@@ -43,7 +43,7 @@
 
 ### 3. Task (задача)
 
-Використовуй task-промпти з [`prompts/tasks/`](../prompts/tasks/) або формулюй задачу самостійно.
+Використовуй task-промпти з [`.ai/prompts/tasks/`](../prompts/tasks/) або формулюй задачу самостійно.
 
 Обов'язкові елементи задачі:
 
@@ -128,5 +128,5 @@ Acceptance criteria:
 1. **Один агент — одна роль**: не змішуй в одному запиті "зроби і перевір".
 2. **Давай контекст явно**: агент не пам'ятає попередньої сесії без handoff.
 3. **Фіксуй результат**: після кожного агента оновлюй project-state.yaml.
-4. **Використовуй task-файли**: готові task-промпти у [`prompts/tasks/`](../prompts/tasks/) заощаджують час.
+4. **Використовуй task-файли**: готові task-промпти у [`.ai/prompts/tasks/`](../prompts/tasks/) заощаджують час.
 5. **Завжди закривай сесію** Handoff Package — інакше контекст буде втрачено.

@@ -16,8 +16,8 @@
 | Phase | Фаза проєкту (bootstrap / planning / execution / done) |
 | Artifact | Файл-результат роботи агента |
 | Bootstrap | Ініціальна фаза — розгортання структури репозиторію |
-| Memory | Довготривала пам'ять проєкту ([`memory/`](.)) |
-| Log | Тимчасовий журнал сесій ([`logs/`](../logs/)) |
+| Memory | Довготривала пам'ять проєкту ([`.ai/memory/`](.)) |
+| Log | Тимчасовий журнал сесій ([`.ai/logs/`](../logs/)) |
 | Recovery Protocol | Процедура відновлення після аварійного завершення сесії без Handoff Package |
 | Emergency Handoff | Мінімальний handoff, створений постфактум для аварійно завершеної сесії |
 | Session Structure Check | CI-перевірка наявності snapshot.yaml + handoff.md у кожній папці сесії |

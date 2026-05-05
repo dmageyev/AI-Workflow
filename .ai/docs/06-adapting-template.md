@@ -10,7 +10,7 @@
 
 ## Крок 2. Оновлення `project-state.yaml`
 
-Файл: [`memory/state/project-state.yaml`](../memory/state/project-state.yaml)
+Файл: [`.ai/memory/state/project-state.yaml`](../memory/state/project-state.yaml)
 
 Замін:
 
@@ -35,14 +35,14 @@
 
 ## Крок 3. Оновлення глосарію
 
-Файл: [`memory/glossary.uk.md`](../memory/glossary.uk.md)
+Файл: [`.ai/memory/glossary.uk.md`](../memory/glossary.uk.md)
 
 Залиш базові терміни (Agent, Handoff, ADR тощо).
 Додай терміни, специфічні для твоєї предметної галузі.
 
 ## Крок 4. Оновлення `domain-notes.md`
 
-Файл: [`memory/knowledge/domain-notes.md`](../memory/knowledge/domain-notes.md)
+Файл: [`.ai/memory/knowledge/domain-notes.md`](../memory/knowledge/domain-notes.md)
 
 Заміни placeholder-контент на реальні знання про твій домен:
 
@@ -62,17 +62,17 @@
 
 ## Крок 6. Перша реальна сесія
 
-1. Встанови реальні work items у [`memory/state/project-state.yaml`](../memory/state/project-state.yaml).
+1. Встанови реальні work items у [`.ai/memory/state/project-state.yaml`](../memory/state/project-state.yaml).
 2. Створи папку першої сесії:
-   [`logs/sessions/YYYY-MM-DD-HHmm-bootstrap/`](../logs/sessions/)
-3. Заповни `snapshot.yaml` та `handoff.md` за шаблонами з [`prompts/handoff/`](../prompts/handoff/).
+   [`.ai/logs/sessions/YYYY-MM-DD-HHmm-bootstrap/`](../logs/sessions/)
+3. Заповни `snapshot.yaml` та `handoff.md` за шаблонами з [`.ai/prompts/handoff/`](../prompts/handoff/).
 4. Закоміть — CI перевірить структуру сесії автоматично.
 
 ## Що НЕ потрібно змінювати
 
-- [`docs/`](.) — документація архітектури та протоколів є універсальною.
-- [`prompts/`](../prompts/) — системні та task-промпти є універсальними.
-- [`agents/registry.yaml`](../agents/registry.yaml) — структура агентів є загальною (можна додати нові ролі).
+- [`.ai/docs/`](.) — документація архітектури та протоколів є універсальною.
+- [`.ai/prompts/`](../prompts/) — системні та task-промпти є універсальними.
+- [`.ai/agents/registry.yaml`](../agents/registry.yaml) — структура агентів є загальною (можна додати нові ролі).
 - [`.github/workflows/lint.yml`](../../.github/workflows/lint.yml) — CI налаштовано правильно для будь-якого проєкту.
 
 ## Поради

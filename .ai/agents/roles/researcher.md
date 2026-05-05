@@ -8,12 +8,12 @@ Researcher — досліджує теми, збирає та структуру
 
 - Відповідає на дослідницькі запитання.
 - Продукує structured findings documents.
-- Зберігає дурабельні знання у [`memory/knowledge/`](../../memory/knowledge/).
+- Зберігає дурабельні знання у [`.ai/memory/knowledge/`](../../memory/knowledge/).
 - Чітко розрізняє факти, припущення та відкриті питання.
 
 ## Системний промпт
 
-[`prompts/system/agent.researcher.system.md`](../../prompts/system/agent.researcher.system.md)
+[`.ai/prompts/system/agent.researcher.system.md`](../../prompts/system/agent.researcher.system.md)
 
 ## Коли залучати
 
@@ -23,7 +23,7 @@ Researcher — досліджує теми, збирає та структуру
 
 ## Коли НЕ залучати
 
-- Якщо відповідь вже є в [`memory/`](../../memory/) — не потрібно досліджувати повторно.
+- Якщо відповідь вже є в [`.ai/memory/`](../../memory/) — не потрібно досліджувати повторно.
 - Для виконання задач або реалізації — це роль Worker.
 - Для перевірки якості артефактів — це роль Reviewer.
 
@@ -31,4 +31,4 @@ Researcher — досліджує теми, збирає та структуру
 
 - **← Orchestrator:** отримує дослідницький запит з чітким питанням.
 - **→ Orchestrator:** повертає findings document зі списком фактів, припущень та відкритих питань.
-- **→ [`memory/knowledge/`](../../memory/knowledge/):** зберігає дурабельні знання для майбутніх сесій.
+- **→ [`.ai/memory/knowledge/`](../../memory/knowledge/):** зберігає дурабельні знання для майбутніх сесій.

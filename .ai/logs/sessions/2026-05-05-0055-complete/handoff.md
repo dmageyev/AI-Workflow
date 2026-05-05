@@ -38,13 +38,13 @@ PR #1 перебуває в draft-статусі. Завдання — заве�
 
 Нових архітектурних рішень у цій сесії не прийнято. Вся робота вже зафіксована:
 
-- [`memory/decisions/0001-record-architecture.md`](../../memory/decisions/0001-record-architecture.md)
-- [`memory/decisions/0002-ci-session-structure-check.md`](../../memory/decisions/0002-ci-session-structure-check.md)
-- [`memory/decisions/0003-github-templates.md`](../../memory/decisions/0003-github-templates.md)
+- [`.ai/memory/decisions/0001-record-architecture.md`](../../memory/decisions/0001-record-architecture.md)
+- [`.ai/memory/decisions/0002-ci-session-structure-check.md`](../../memory/decisions/0002-ci-session-structure-check.md)
+- [`.ai/memory/decisions/0003-github-templates.md`](../../memory/decisions/0003-github-templates.md)
 
 ## Current state
 
-- **Snapshot:** [`logs/sessions/2026-05-05-0055-complete/snapshot.yaml`](snapshot.yaml)
+- **Snapshot:** [`.ai/logs/sessions/2026-05-05-0055-complete/snapshot.yaml`](snapshot.yaml)
 - **Open questions:** немає
 - **Blockers:** немає
 - **PR #1 статус:** draft → потребує переходу в ready for review (виконати вручну в UI)

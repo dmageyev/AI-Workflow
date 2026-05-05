@@ -17,7 +17,7 @@
 
 1. **Explicit over implicit** — усі рішення, стани та домовленості зафіксовані в репо.
 2. **Handoff is first-class** — кожна сесія завершується Handoff Package.
-3. **Memory discipline** — тимчасове у [`logs/`](../logs/), довготривале у [`memory/`](../memory/).
+3. **Memory discipline** — тимчасове у [`.ai/logs/`](../logs/), довготривале у [`.ai/memory/`](../memory/).
 4. **Language policy** — основний контент українською, технічні терміни/ключі/імена файлів англійською.
 
 ## Довгострокова ціль

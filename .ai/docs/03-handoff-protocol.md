@@ -48,8 +48,8 @@ Handoff Package — це набір артефактів, що передают�
 
 ## Шаблони
 
-- [`prompts/handoff/handoff.template.md`](../prompts/handoff/handoff.template.md)
-- [`prompts/handoff/snapshot.template.yaml`](../prompts/handoff/snapshot.template.yaml)
+- [`.ai/prompts/handoff/handoff.template.md`](../prompts/handoff/handoff.template.md)
+- [`.ai/prompts/handoff/snapshot.template.yaml`](../prompts/handoff/snapshot.template.yaml)
 
 ## Правила версіонування
 
@@ -62,7 +62,7 @@ Handoff Package — це набір артефактів, що передают�
 Якщо сесія перервалася до створення Handoff Package:
 
 1. **Детекція незакритої сесії.** Orchestrator на початку перевіряє: чи існує папка в
-   [`logs/sessions/`](../logs/sessions/), яка не містить обох файлів (`snapshot.yaml` та `handoff.md`).
+   [`.ai/logs/sessions/`](../logs/sessions/), яка не містить обох файлів (`snapshot.yaml` та `handoff.md`).
    Якщо так — попередня сесія вважається незакритою.
 
 2. **Мінімальний аварійний handoff.** Якщо завершити повноцінний handoff неможливо,
@@ -75,7 +75,7 @@ Handoff Package — це набір артефактів, що передают�
    ```
 
 3. **Відновлення контексту.** Наступна сесія повинна:
-   - Прочитати [`memory/state/project-state.yaml`](../memory/state/project-state.yaml) як canonical state
+   - Прочитати [`.ai/memory/state/project-state.yaml`](../memory/state/project-state.yaml) як canonical state
    - Перевірити `git log` на останні зміни
    - Зафіксувати незакриту попередню сесію в секції "Open questions" нового handoff
 
@@ -86,7 +86,7 @@ Handoff Package — це набір артефактів, що передают�
 
 | | `snapshot.yaml` | `project-state.yaml` |
 |---|---|---|
-| **Розташування** | [`logs/sessions/<session>/`](../logs/sessions/) | [`memory/state/`](../memory/state/) |
+| **Розташування** | [`.ai/logs/sessions/<session>/`](../logs/sessions/) | [`.ai/memory/state/`](../memory/state/) |
 | **Призначення** | Зріз стану однієї конкретної сесії | Живий канонічний стан усього проєкту |
 | **Мутабельність** | Незмінний після закриття сесії | Оновлюється Orchestrator після кожної сесії |
 | **Читається** | Наступним агентом при відновленні контексту | Orchestrator на початку кожної сесії |

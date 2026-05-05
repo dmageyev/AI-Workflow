@@ -31,6 +31,6 @@ Handoff Package складається з `snapshot.yaml` (YAML state) + `handof
 ## Consequences
 
 - Усі агенти працюють через артефакти в репо (не через прямі повідомлення).
-- Orchestrator є єдиним власником [`memory/state/project-state.yaml`](../state/project-state.yaml).
+- Orchestrator є єдиним власником [`.ai/memory/state/project-state.yaml`](../state/project-state.yaml).
 - Кожна сесія обов'язково завершується Handoff Package.
-- ADR фіксуються у [`memory/decisions/`](.) за схемою `NNNN-kebab-case-title.md`.
+- ADR фіксуються у [`.ai/memory/decisions/`](.) за схемою `NNNN-kebab-case-title.md`.

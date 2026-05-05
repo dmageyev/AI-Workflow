@@ -23,11 +23,11 @@
 
 Після виконання промпта у репозиторії мають бути:
 
-- актуальний стан у [`memory/state/project-state.yaml`](../../memory/state/project-state.yaml)
-- описані ролі/реєстр у [`agents/registry.yaml`](../../agents/registry.yaml)
-- описаний протокол передачі у [`docs/03-handoff-protocol.md`](../03-handoff-protocol.md)
-- готовий runbook у [`workflows/runbook.uk.md`](../../workflows/runbook.uk.md)
-- створена перша сесія у [`logs/sessions/YYYY-MM-DD-HHmm-topic/`](../../logs/sessions/) (якщо агент має право комітити)
+- актуальний стан у [`.ai/memory/state/project-state.yaml`](../../memory/state/project-state.yaml)
+- описані ролі/реєстр у [`.ai/agents/registry.yaml`](../../agents/registry.yaml)
+- описаний протокол передачі у [`.ai/docs/03-handoff-protocol.md`](../03-handoff-protocol.md)
+- готовий runbook у [`.ai/workflows/runbook.uk.md`](../../workflows/runbook.uk.md)
+- створена перша сесія у [`.ai/logs/sessions/YYYY-MM-DD-HHmm-topic/`](../../logs/sessions/) (якщо агент має право комітити)
 
 ## Якщо агент не має права комітити
 
@@ -38,14 +38,17 @@
 
 ## Мінімальний "перший handoff" вручну
 
-1. Створи папку: [`logs/sessions/YYYY-MM-DD-HHmm-bootstrap/`](../../logs/sessions/)
+1. Створи папку: [`.ai/logs/sessions/YYYY-MM-DD-HHmm-bootstrap/`](../../logs/sessions/)
 2. Додай:
-   - `snapshot.yaml` (копія [`prompts/handoff/snapshot.template.yaml`](../../prompts/handoff/snapshot.template.yaml) + заповнити)
-   - `handoff.md` (копія [`prompts/handoff/handoff.template.md`](../../prompts/handoff/handoff.template.md) + заповнити)
+   - `snapshot.yaml` (копія [`.ai/prompts/handoff/snapshot.template.yaml`][snap] + заповнити)
+   - `handoff.md` (копія [`.ai/prompts/handoff/handoff.template.md`][ht] + заповнити)
+
+[snap]: ../../prompts/handoff/snapshot.template.yaml
+[ht]: ../../prompts/handoff/handoff.template.md
 3. Закоміть.
 
 ## Порада по дисципліні пам'яті
 
-- Все тимчасове — у [`logs/`](../../logs/).
-- Все довготривале — у [`memory/`](../../memory/).
-- Рішення — тільки ADR у [`memory/decisions/`](../../memory/decisions/).
+- Все тимчасове — у [`.ai/logs/`](../../logs/).
+- Все довготривале — у [`.ai/memory/`](../../memory/).
+- Рішення — тільки ADR у [`.ai/memory/decisions/`](../../memory/decisions/).
