@@ -478,7 +478,7 @@ jobs:
       - name: Check VERSION matches latest CHANGELOG entry
         shell: bash
         run: |
-          VERSION_FILE="VERSION"
+          VERSION_FILE=".ai/VERSION"
           CHANGELOG_FILE="CHANGELOG.md"
 
           if [ ! -f "$VERSION_FILE" ]; then

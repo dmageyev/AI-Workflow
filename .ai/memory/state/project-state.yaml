@@ -1,10 +1,10 @@
-version: 4
+version: 5
 project: "AI-Workflow"
 date: "2026-05-05"
 owner: "dmageyev"
 
 objective_ua: "Покращення шаблону репозиторію для мультиагентної роботи"
-current_focus: "improvements batch 2 — завершено"
+current_focus: "SCALE-005 — консолідація кореневих файлів до .ai/"
 
 agents:
   active:
@@ -16,8 +16,8 @@ agents:
     - "researcher"
 
 state:
-  phase: "done"
-  progress: 100
+  phase: "scale"
+  progress: 10
 
 constraints:
   language_policy: "UA content, EN technical terms"
@@ -34,6 +34,12 @@ work_items:
     notes: >-
       Окремий файл .ai/memory/state/work-items-archive.yaml.
       CI оновлено. Усі попередні done-items перенесено до архіву (milestone v1, v2).
+  - id: "SCALE-005"
+    title: "Consolidate template root files into .ai/ directory"
+    status: "in-progress"
+    notes: >-
+      Переміщення STATUS.md, ROADMAP.md, QUICKSTART.md, VERSION, llms.txt до .ai/.
+      ADR-0004. Зменшення "шуму" в корені репо для AI-агентів.
 
 knowledge_links:
   - ".ai/memory/knowledge/domain-notes.md"
@@ -43,3 +49,4 @@ decision_links:
   - ".ai/memory/decisions/0001-record-architecture.md"
   - ".ai/memory/decisions/0002-ci-session-structure-check.md"
   - ".ai/memory/decisions/0003-github-templates.md"
+  - ".ai/memory/decisions/0004-root-files-consolidation.md"

@@ -14,7 +14,7 @@
 
 ## Крок 2. Налаштуй project-state.yaml
 
-Відкрий [`.ai/memory/state/project-state.yaml`](./.ai/memory/state/project-state.yaml)
+Відкрий [`memory/state/project-state.yaml`](./memory/state/project-state.yaml)
 і заміни значення під свій проєкт:
 
 ```yaml
@@ -31,13 +31,13 @@ work_items:
     notes: ""
 ```
 
-Детальна інструкція: [`.ai/docs/06-adapting-template.md`](./.ai/docs/06-adapting-template.md)
+Детальна інструкція: [`docs/06-adapting-template.md`](./docs/06-adapting-template.md)
 
 ---
 
 ## Крок 3. Налаштуй CODEOWNERS
 
-Відкрий [`.github/CODEOWNERS`](./.github/CODEOWNERS) і заміни `@dmageyev` на свій username:
+Відкрий [`../.github/CODEOWNERS`](../.github/CODEOWNERS) і заміни `@dmageyev` на свій username:
 
 ```text
 .ai/ @твій-username
@@ -53,11 +53,11 @@ work_items:
 
 | Якщо тобі потрібно... | Використай агента |
 | --- | --- |
-| Скоординувати роботу | [Orchestrator](./.ai/prompts/system/agent.orchestrator.system.md) |
-| Виконати конкретну задачу | [Worker](./.ai/prompts/system/agent.worker.system.md) |
-| Дослідити тему | [Researcher](./.ai/prompts/system/agent.researcher.system.md) |
-| Перевірити артефакт | [Reviewer](./.ai/prompts/system/agent.reviewer.system.md) |
-| Прийняти архітектурне рішення | [Architect](./.ai/prompts/system/agent.architect.system.md) |
+| Скоординувати роботу | [Orchestrator](./prompts/system/agent.orchestrator.system.md) |
+| Виконати конкретну задачу | [Worker](./prompts/system/agent.worker.system.md) |
+| Дослідити тему | [Researcher](./prompts/system/agent.researcher.system.md) |
+| Перевірити артефакт | [Reviewer](./prompts/system/agent.reviewer.system.md) |
+| Прийняти архітектурне рішення | [Architect](./prompts/system/agent.architect.system.md) |
 
 ### 4.2. Структура запиту до агента
 
@@ -72,7 +72,7 @@ Acceptance criteria:
 - [ ] <що вважається виконаним>
 ```
 
-Детальніше: [`.ai/docs/05-agent-requests.md`](./.ai/docs/05-agent-requests.md)
+Детальніше: [`docs/05-agent-requests.md`](./docs/05-agent-requests.md)
 
 ---
 
@@ -86,7 +86,8 @@ Acceptance criteria:
   handoff.md      ← за шаблоном .ai/prompts/handoff/handoff.template.md
 ```
 
-Оновити `project-state.yaml` (статуси work items, фаза, прогрес).
+Оновити [`memory/state/project-state.yaml`](./memory/state/project-state.yaml)
+(статуси work items, фаза, прогрес).
 
 Закоміть — CI автоматично перевірить структуру сесії.
 
@@ -107,10 +108,10 @@ Acceptance criteria:
 
 ## Корисні посилання
 
-- [Архітектура системи](./.ai/docs/01-architecture.md)
-- [Workflow (цикл сесії)](./.ai/docs/02-workflow.md)
-- [Протокол Handoff](./.ai/docs/03-handoff-protocol.md)
-- [Quality Gates](./.ai/docs/04-quality-gates.md)
-- [Запити до агентів](./.ai/docs/05-agent-requests.md)
-- [Адаптація під свій проєкт](./.ai/docs/06-adapting-template.md)
-- [Глосарій](./.ai/memory/glossary.uk.md)
+- [Архітектура системи](./docs/01-architecture.md)
+- [Workflow (цикл сесії)](./docs/02-workflow.md)
+- [Протокол Handoff](./docs/03-handoff-protocol.md)
+- [Quality Gates](./docs/04-quality-gates.md)
+- [Запити до агентів](./docs/05-agent-requests.md)
+- [Адаптація під свій проєкт](./docs/06-adapting-template.md)
+- [Глосарій](./memory/glossary.uk.md)

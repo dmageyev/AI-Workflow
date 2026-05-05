@@ -13,6 +13,7 @@
 ## Key entry points
 
 - `README.md` — project overview and usage instructions
+- `.ai/QUICKSTART.md` — 5-step guide from zero to first session
 - `.ai/docs/bootstrap/start_promt.md` — bootstrap prompt for new repo / new work cycle
 - `.ai/docs/bootstrap/start_guide.md` — instructions for using the start prompt
 - `.ai/docs/bootstrap/create-repo-prompt.md` — prompt to reproduce this structure in a new repository
@@ -47,6 +48,9 @@
 - `.ai/docs/04-quality-gates.md` — quality checklists (session close, handoff, ADR)
 - `.ai/docs/05-agent-requests.md` — how to make requests to agents
 - `.ai/docs/06-adapting-template.md` — how to adapt this template for your own project
+- `.ai/STATUS.md` — live project status dashboard
+- `.ai/ROADMAP.md` — milestone roadmap
+- `.ai/VERSION` — semver version of the template
 
 ## Workflows
 

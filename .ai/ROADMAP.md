@@ -61,9 +61,9 @@
 
 ---
 
-## 🔮 v2.0 — Scale & Automation (planned)
+## 🔄 v2.0 — Scale & Automation (in-progress)
 
-**Status:** planned
+**Status:** in-progress | **Розпочато:** 2026-05-05
 
 Ціль: підтримка командної роботи та автоматизація частини workflow.
 
@@ -73,3 +73,4 @@
 | SCALE-002 | Шаблон multi-owner CODEOWNERS для команд | planned |
 | SCALE-003 | Versioned system prompts (теґи git) | planned |
 | SCALE-004 | Інтеграційний тест: повний цикл сесії | planned |
+| SCALE-005 | Консолідація кореневих файлів шаблону до `.ai/` | in-progress |

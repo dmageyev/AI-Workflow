@@ -16,7 +16,7 @@
 
 ## Швидкий старт
 
-> Повна покрокова інструкція: [`QUICKSTART.md`](./QUICKSTART.md)
+> Повна покрокова інструкція: [`.ai/QUICKSTART.md`](./.ai/QUICKSTART.md)
 
 1. Стартовий промпт для запуску нового репозиторію/циклу:
    - [`.ai/docs/bootstrap/start_promt.md`](./.ai/docs/bootstrap/start_promt.md)
@@ -43,13 +43,10 @@
 ```text
 AI-Workflow/
   README.md
-  QUICKSTART.md
-  STATUS.md
-  ROADMAP.md
-  VERSION
+  llms.txt
   CONTRIBUTING.md
   CHANGELOG.md
-  llms.txt
+  SECURITY.md
   .gitignore
   .markdownlint.json
   .yamllint.yml
@@ -125,6 +122,12 @@ AI-Workflow/
     logs/
       README.md
       sessions/
+
+    QUICKSTART.md
+    STATUS.md
+    ROADMAP.md
+    VERSION
+    llms.txt
 ```
 
 - [`.ai/docs/`](./.ai/docs/) — бачення, архітектура, workflow, протокол передачі, адаптація шаблону
@@ -136,10 +139,10 @@ AI-Workflow/
 - [`llms.txt`](./llms.txt) — опис репозиторію для LLM-інструментів
 - [`CONTRIBUTING.md`](./CONTRIBUTING.md) — правила внеску в репозиторій
 - [`CHANGELOG.md`](./CHANGELOG.md) — журнал змін між версіями шаблону
-- [`QUICKSTART.md`](./QUICKSTART.md) — 5 кроків для швидкого старту
-- [`STATUS.md`](./STATUS.md) — поточний стан проєкту (фаза, прогрес)
-- [`ROADMAP.md`](./ROADMAP.md) — дорожня карта milestone
-- [`VERSION`](./VERSION) — semver версія шаблону
+- [`.ai/QUICKSTART.md`](./.ai/QUICKSTART.md) — 5 кроків для швидкого старту
+- [`.ai/STATUS.md`](./.ai/STATUS.md) — поточний стан проєкту (фаза, прогрес)
+- [`.ai/ROADMAP.md`](./.ai/ROADMAP.md) — дорожня карта milestone
+- [`.ai/VERSION`](./.ai/VERSION) — semver версія шаблону
 
 ## Як працювати (операційна модель)
 

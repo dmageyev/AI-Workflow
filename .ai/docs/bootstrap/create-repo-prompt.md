@@ -27,7 +27,7 @@
    - Обов'язкові поля project-state.yaml (project-state-check job)
    Усі jobs мають мати permissions: contents: read.
 4. Додати конфігурацію .markdownlint.json (line-length: 120) та .yamllint.yml.
-5. Додати llms.txt у корені репо з описом структури для LLM-інструментів.
+5. Додати `llms.txt` у корені репо з описом структури для LLM-інструментів.
 6. Додати CONTRIBUTING.md та CHANGELOG.md у корені репо.
 7. Додати GitHub-шаблони:
    - .github/CODEOWNERS (власник: <OWNER> для шляху .ai/)
@@ -69,12 +69,17 @@
     README.md               ← опис формату сесій
     sessions/               ← папки сесій (YYYY-MM-DD-HHmm-topic/)
       README.md             ← зберігає порожню папку sessions/ в Git
+  QUICKSTART.md             ← покрокова інструкція для першої сесії
+  STATUS.md                 ← живий дашборд стану проєкту
+  ROADMAP.md                ← дорожня карта milestone
+  VERSION                   ← semver версія шаблону
 
 Додатково у корені репо:
   README.md               ← опис репо та інструкція користування
   CONTRIBUTING.md         ← правила внеску
   CHANGELOG.md            ← журнал змін
-  llms.txt                ← опис для LLM-інструментів
+  SECURITY.md             ← політика безпеки
+  llms.txt                ← опис для LLM-інструментів (вимога стандарту llmstxt.org)
   .gitignore
   .markdownlint.json
   .yamllint.yml

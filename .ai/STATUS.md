@@ -4,10 +4,10 @@
 
 | Поле | Значення |
 | ---- | -------- |
-| **Фаза** | `done` |
-| **Прогрес** | 100% |
-| **Остання сесія** | `.ai/logs/sessions/2026-05-05-0055-complete/` |
-| **Відкритих work items** | 0 |
+| **Фаза** | `scale` |
+| **Прогрес** | 5% |
+| **Остання сесія** | `.ai/logs/sessions/2026-05-05-0231-scale-005/` |
+| **Відкритих work items** | 1 |
 | **Остання зміна** | 2026-05-05 |
 
 ## Як оновлювати
@@ -22,6 +22,6 @@ Orchestrator оновлює цей файл наприкінці кожної с
 
 ## Посилання
 
-- Детальний стан: [`.ai/memory/state/project-state.yaml`](./.ai/memory/state/project-state.yaml)
-- Архів завершених задач: [`.ai/memory/state/work-items-archive.yaml`](./.ai/memory/state/work-items-archive.yaml)
+- Детальний стан: [`project-state.yaml`](./memory/state/project-state.yaml)
+- Архів завершених задач: [`work-items-archive.yaml`](./memory/state/work-items-archive.yaml)
 - Дорожня карта: [`ROADMAP.md`](./ROADMAP.md)

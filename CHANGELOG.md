@@ -8,6 +8,14 @@
 
 ## [Unreleased]
 
+### Changed
+
+- `STATUS.md`, `ROADMAP.md`, `QUICKSTART.md`, `VERSION` переміщено з кореня до `.ai/`
+  (ADR-0004: зменшення "шуму" в корені для AI-агентів; `llms.txt` залишається в корені
+  за стандартом [llmstxt.org](https://llmstxt.org))
+- CI `version-changelog-sync`: шлях до `VERSION` змінено на `.ai/VERSION`
+- `llms.txt` оновлено: посилання на нові шляхи переміщених файлів
+
 ---
 
 ## [1.2.0] — 2026-05-05
