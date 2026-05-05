@@ -129,9 +129,10 @@ AI-Workflow/
 
 ## Як працювати (операційна модель)
 
-1. **Orchestrator** читає [`.ai/memory/state/project-state.yaml`](./.ai/memory/state/project-state.yaml) і останній handoff з [`.ai/logs/sessions/`](./.ai/logs/sessions/).
-2. Делегує підзадачі агентам (Worker / Researcher / Reviewer).
-3. Кожен результат оформлюється артефактами:
+1. **Orchestrator** читає [`.ai/memory/state/project-state.yaml`](./.ai/memory/state/project-state.yaml) і останній handoff з
+ [`.ai/logs/sessions/`](./.ai/logs/sessions/).
+3. Делегує підзадачі агентам (Worker / Researcher / Reviewer).
+4. Кожен результат оформлюється артефактами:
    - зміни в репо
    - ADR (якщо потрібні рішення) у [`.ai/memory/decisions/`](./.ai/memory/decisions/)
    - оновлення [`.ai/memory/state/project-state.yaml`](./.ai/memory/state/project-state.yaml)
