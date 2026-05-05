@@ -46,7 +46,7 @@
 
 ## Key decisions
 
-- Decision links: [`.ai/memory/decisions/0001-record-architecture.md`](../../memory/decisions/0001-record-architecture.md)
+- Decision links: [`.ai/memory/decisions/0001-record-architecture.md`](../../../memory/decisions/0001-record-architecture.md)
 
 ## Current state
 

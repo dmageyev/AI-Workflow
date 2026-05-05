@@ -16,6 +16,8 @@
 
 ## Швидкий старт
 
+> Повна покрокова інструкція: [`QUICKSTART.md`](./QUICKSTART.md)
+
 1. Стартовий промпт для запуску нового репозиторію/циклу:
    - [`.ai/docs/bootstrap/start_promt.md`](./.ai/docs/bootstrap/start_promt.md)
 
@@ -41,6 +43,10 @@
 ```text
 AI-Workflow/
   README.md
+  QUICKSTART.md
+  STATUS.md
+  ROADMAP.md
+  VERSION
   CONTRIBUTING.md
   CHANGELOG.md
   llms.txt
@@ -83,6 +89,8 @@ AI-Workflow/
         implement-feature.task.md
         review.task.md
         debug.task.md
+        delegate.task.md
+        research.task.md
       handoff/
         handoff.template.md
         snapshot.template.yaml
@@ -103,6 +111,7 @@ AI-Workflow/
         0002-ci-session-structure-check.md
         0003-github-templates.md
       knowledge/
+        README.md
         domain-notes.md
       state/
         project-state.yaml
@@ -127,6 +136,10 @@ AI-Workflow/
 - [`llms.txt`](./llms.txt) — опис репозиторію для LLM-інструментів
 - [`CONTRIBUTING.md`](./CONTRIBUTING.md) — правила внеску в репозиторій
 - [`CHANGELOG.md`](./CHANGELOG.md) — журнал змін між версіями шаблону
+- [`QUICKSTART.md`](./QUICKSTART.md) — 5 кроків для швидкого старту
+- [`STATUS.md`](./STATUS.md) — поточний стан проєкту (фаза, прогрес)
+- [`ROADMAP.md`](./ROADMAP.md) — дорожня карта milestone
+- [`VERSION`](./VERSION) — semver версія шаблону
 
 ## Як працювати (операційна модель)
 
@@ -155,6 +168,10 @@ AI-Workflow/
 - Обов'язкові поля `project-state.yaml` (version, date, state.phase, work_items)
 - Структура та статуси `work-items-archive.yaml`
 - Іменування ADR файлів (формат `NNNN-kebab-case-title.md`)
+- Унікальність номерів ADR
+- Відсутність дублікатів ID між `work_items` та архівом
+- Мертві внутрішні посилання у Markdown файлах
+- Синхронність `VERSION` та `CHANGELOG.md`
 
 Файл workflow: [`.github/workflows/lint.yml`](./.github/workflows/lint.yml)
 

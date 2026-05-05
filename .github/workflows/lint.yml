@@ -265,6 +265,173 @@ jobs:
           print("OK: all snapshot.yaml files have required fields")
           PYEOF
 
+  adr-uniqueness-check:
+    name: ADR Number Uniqueness Check
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check ADR number uniqueness
+        shell: bash
+        run: |
+          ADR_DIR=".ai/memory/decisions"
+          EXIT_CODE=0
+
+          if [ ! -d "$ADR_DIR" ]; then
+            echo "INFO: $ADR_DIR does not exist, skipping check."
+            exit 0
+          fi
+
+          python3 - <<'PYEOF'
+          import os
+          import re
+          import sys
+
+          adr_dir = ".ai/memory/decisions"
+          pattern = re.compile(r'^(\d{4})-')
+          seen = {}
+          errors = []
+
+          for fname in sorted(os.listdir(adr_dir)):
+              m = pattern.match(fname)
+              if not m:
+                  continue
+              num = m.group(1)
+              if num in seen:
+                  errors.append(
+                      f"Duplicate ADR number {num}: '{seen[num]}' and '{fname}'"
+                  )
+              else:
+                  seen[num] = fname
+
+          if errors:
+              for err in errors:
+                  print(f"ERROR: {err}")
+              sys.exit(1)
+
+          print(f"OK: {len(seen)} ADR files, all numbers are unique")
+          PYEOF
+
+  work-items-id-dedup-check:
+    name: Work Items ID Deduplication Check
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check for duplicate work item IDs across active and archive
+        shell: bash
+        run: |
+          STATE_FILE=".ai/memory/state/project-state.yaml"
+          ARCHIVE_FILE=".ai/memory/state/work-items-archive.yaml"
+
+          if [ ! -f "$STATE_FILE" ]; then
+            echo "INFO: $STATE_FILE does not exist, skipping check."
+            exit 0
+          fi
+
+          export STATE_FILE ARCHIVE_FILE
+          python3 - <<'PYEOF'
+          import os
+          import sys
+          import yaml
+
+          state_file = os.environ["STATE_FILE"]
+          archive_file = os.environ.get("ARCHIVE_FILE", "")
+
+          with open(state_file, "r", encoding="utf-8") as f:
+              state = yaml.safe_load(f)
+
+          active_ids = {item["id"] for item in state.get("work_items", []) if "id" in item}
+          errors = []
+
+          if archive_file and os.path.isfile(archive_file):
+              with open(archive_file, "r", encoding="utf-8") as f:
+                  archive = yaml.safe_load(f)
+              archive_ids = set()
+              for ms in (archive or {}).get("milestones", []):
+                  for item in ms.get("items", []):
+                      if "id" in item:
+                          if item["id"] in archive_ids:
+                              errors.append(
+                                  f"Duplicate ID in archive: '{item['id']}'"
+                              )
+                          archive_ids.add(item["id"])
+
+              overlap = active_ids & archive_ids
+              for dup in sorted(overlap):
+                  errors.append(
+                      f"ID '{dup}' appears in both project-state.yaml "
+                      f"and work-items-archive.yaml"
+                  )
+
+          if errors:
+              for err in errors:
+                  print(f"ERROR: {err}")
+              sys.exit(1)
+
+          print("OK: No duplicate work item IDs found")
+          PYEOF
+
+  dead-links-check:
+    name: Dead Links Check
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check for dead internal links in Markdown files
+        shell: bash
+        run: |
+          python3 - <<'PYEOF'
+          import os
+          import re
+          import sys
+          import urllib.parse
+
+          # Match [text](path) — only relative (non-http) links
+          LINK_RE = re.compile(r'\[(?:[^\]]*)\]\(([^)]+)\)')
+          errors = []
+
+          for root, dirs, files in os.walk("."):
+              # Skip .git directory
+              dirs[:] = [d for d in dirs if d != ".git" and not d.startswith(".git/")]
+              for fname in files:
+                  if not fname.endswith(".md"):
+                      continue
+                  fpath = os.path.join(root, fname)
+                  with open(fpath, "r", encoding="utf-8", errors="replace") as f:
+                      content = f.read()
+                  for match in LINK_RE.finditer(content):
+                      raw = match.group(1)
+                      # Skip external URLs, mailto, anchors-only
+                      if raw.startswith(("http://", "https://", "mailto:", "#")):
+                          continue
+                      # Strip inline anchor
+                      path_part = raw.split("#")[0]
+                      if not path_part:
+                          continue
+                      # Decode percent-encoding
+                      path_part = urllib.parse.unquote(path_part)
+                      # Resolve relative to the file's directory
+                      target = os.path.normpath(
+                          os.path.join(os.path.dirname(fpath), path_part)
+                      )
+                      if not os.path.exists(target):
+                          errors.append(f"{fpath}: dead link → '{raw}'")
+
+          if errors:
+              for err in errors:
+                  print(f"ERROR: {err}")
+              sys.exit(1)
+
+          print("OK: No dead internal links found")
+          PYEOF
+
   adr-naming-check:
     name: ADR Filename Check
     runs-on: ubuntu-latest
@@ -299,3 +466,45 @@ jobs:
             echo "OK: All ADR files follow the naming convention"
           fi
           exit "$EXIT_CODE"
+
+  version-changelog-sync:
+    name: VERSION and CHANGELOG Sync Check
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check VERSION matches latest CHANGELOG entry
+        shell: bash
+        run: |
+          VERSION_FILE="VERSION"
+          CHANGELOG_FILE="CHANGELOG.md"
+
+          if [ ! -f "$VERSION_FILE" ]; then
+            echo "INFO: $VERSION_FILE does not exist, skipping check."
+            exit 0
+          fi
+
+          if [ ! -f "$CHANGELOG_FILE" ]; then
+            echo "INFO: $CHANGELOG_FILE does not exist, skipping check."
+            exit 0
+          fi
+
+          VERSION=$(tr -d '[:space:]' < "$VERSION_FILE")
+
+          # Extract the latest versioned section (## [X.Y.Z]) from CHANGELOG, skip [Unreleased]
+          LATEST_CHANGELOG=$(grep -oE '^\#\# \[[0-9]+\.[0-9]+\.[0-9]+\]' "$CHANGELOG_FILE" | head -1 | grep -oE '[0-9]+\.[0-9]+\.[0-9]+')
+
+          if [ -z "$LATEST_CHANGELOG" ]; then
+            echo "INFO: No versioned section found in $CHANGELOG_FILE, skipping sync check."
+            exit 0
+          fi
+
+          if [ "$VERSION" != "$LATEST_CHANGELOG" ]; then
+            echo "ERROR: VERSION file contains '$VERSION' but latest CHANGELOG entry is '[$LATEST_CHANGELOG]'"
+            echo "       Update VERSION to match or add a new CHANGELOG section."
+            exit 1
+          fi
+
+          echo "OK: VERSION ($VERSION) matches latest CHANGELOG entry [$LATEST_CHANGELOG]"

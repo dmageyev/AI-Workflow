@@ -38,9 +38,9 @@ PR #1 перебуває в draft-статусі. Завдання — заве�
 
 Нових архітектурних рішень у цій сесії не прийнято. Вся робота вже зафіксована:
 
-- [`.ai/memory/decisions/0001-record-architecture.md`](../../memory/decisions/0001-record-architecture.md)
-- [`.ai/memory/decisions/0002-ci-session-structure-check.md`](../../memory/decisions/0002-ci-session-structure-check.md)
-- [`.ai/memory/decisions/0003-github-templates.md`](../../memory/decisions/0003-github-templates.md)
+- [`.ai/memory/decisions/0001-record-architecture.md`](../../../memory/decisions/0001-record-architecture.md)
+- [`.ai/memory/decisions/0002-ci-session-structure-check.md`](../../../memory/decisions/0002-ci-session-structure-check.md)
+- [`.ai/memory/decisions/0003-github-templates.md`](../../../memory/decisions/0003-github-templates.md)
 
 ## Current state
 

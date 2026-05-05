@@ -1,11 +1,18 @@
 agents:
   - id: "architect"
     role: "System Architect"
+    status: "active"
     prompt: ".ai/prompts/system/agent.architect.system.md"
     responsibilities:
       - "Проєктує структуру репозиторію та протоколи"
       - "Веде .ai/docs/01-architecture.md та .ai/docs/03-handoff-protocol.md"
       - "Створює ADR у .ai/memory/decisions/"
+    capabilities:
+      - "design-architecture"
+      - "write-adr"
+      - "update-docs"
+      - "review-protocols"
+    max_context_items: 3
     delegates_to:
       - "worker"
       - "researcher"
@@ -13,11 +20,19 @@ agents:
 
   - id: "orchestrator"
     role: "Orchestrator"
+    status: "active"
     prompt: ".ai/prompts/system/agent.orchestrator.system.md"
     responsibilities:
       - "Координує роботу агентів"
       - "Підтримує .ai/memory/state/project-state.yaml"
       - "Забезпечує створення Handoff Package після кожної сесії"
+    capabilities:
+      - "read-state"
+      - "write-state"
+      - "delegate-tasks"
+      - "create-handoff"
+      - "enforce-quality-gates"
+    max_context_items: 10
     delegates_to:
       - "worker"
       - "researcher"
@@ -27,20 +42,33 @@ agents:
 
   - id: "worker"
     role: "Worker"
+    status: "active"
     prompt: ".ai/prompts/system/agent.worker.system.md"
     responsibilities:
       - "Виконує конкретні задачі з work_items"
       - "Продукує артефакти (файли)"
+    capabilities:
+      - "create-artifacts"
+      - "update-files"
+      - "implement-features"
+    max_context_items: 5
     delegates_to: []
     escalates_to:
       - "orchestrator"
 
   - id: "reviewer"
     role: "Reviewer"
+    status: "active"
     prompt: ".ai/prompts/system/agent.reviewer.system.md"
     responsibilities:
       - "Перевіряє артефакти за .ai/docs/04-quality-gates.md"
       - "Виносить вердикт approved / rejected"
+    capabilities:
+      - "review-artifacts"
+      - "review-handoff"
+      - "review-adr"
+      - "enforce-quality-gates"
+    max_context_items: 5
     delegates_to: []
     escalates_to:
       - "orchestrator"
@@ -48,10 +76,16 @@ agents:
 
   - id: "researcher"
     role: "Researcher"
+    status: "active"
     prompt: ".ai/prompts/system/agent.researcher.system.md"
     responsibilities:
       - "Досліджує теми та збирає інформацію"
       - "Зберігає знахідки у .ai/memory/knowledge/"
+    capabilities:
+      - "research-topics"
+      - "write-knowledge"
+      - "analyze-patterns"
+    max_context_items: 5
     delegates_to: []
     escalates_to:
       - "orchestrator"

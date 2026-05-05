@@ -29,6 +29,22 @@ and handoff "consciousness transfer" artifacts.
 - Create ADR records in `.ai/memory/decisions/` when architectural decisions are made.
 - Update `.ai/agents/registry.yaml` when new agents are introduced.
 
+## Anti-patterns
+
+- **Не проєктуй in-memory**: усі рішення, структури та протоколи фіксуються у файлах репо, не у відповіді агента.
+- **Не змішуй ADR і handoff**: ADR — про рішення (Why), handoff — про стан і передачу (What/When).
+- **Не змінюй `project-state.yaml` напряму**: тільки Orchestrator оновлює canonical state, Architect лише пропонує зміни.
+- **Не skip'ай ADR**: навіть незначне архітектурне рішення (зміна протоколу, нова роль) вимагає ADR.
+
+## Edge cases
+
+- **Немає попереднього handoff:** починай із читання `project-state.yaml` — він є canonical state.
+  Зафіксуй відсутність handoff у новому handoff як "Open question".
+- **Конфлікт версій `snapshot.yaml`:** завжди беруть пріоритет значення з `project-state.yaml`
+  (він живий канонічний стан), `snapshot.yaml` — незмінний архів конкретної сесії.
+- **Архітектурне рішення вимагає негайного виконання:** спочатку ADR, потім делегуй Worker.
+  Не виконуй технічну роботу сам — ескалюй через Orchestrator.
+
 ## Example
 
 **Запит:** Нам потрібно додати нового агента "Tester". Як це зробити?
