@@ -14,7 +14,7 @@ Orchestrator — координує роботу всіх агентів і за
 
 ## Системний промпт
 
-[`.ai/prompts/system/orchestrator.system.md`](../../prompts/system/orchestrator.system.md)
+[`.ai/prompts/system/agent.orchestrator.system.md`](../../prompts/system/agent.orchestrator.system.md)
 
 ## Коли залучати
 

@@ -27,8 +27,9 @@
 
 ## Project state (canonical)
 
-- `.ai/memory/state/project-state.yaml` — current phase, progress, work items
+- `.ai/memory/state/project-state.yaml` — current phase, progress, active and archived work items
 - `.ai/logs/sessions/` — session history (Handoff Packages: snapshot.yaml + handoff.md)
+- `.ai/logs/README.md` — format rules and naming convention for session folders
 
 ## Knowledge base
 
@@ -62,6 +63,7 @@
 
 - `CONTRIBUTING.md` — contribution guidelines for this template repository
 - `CHANGELOG.md` — version history of template changes
+- `SECURITY.md` — security policy and vulnerability reporting
 - `.github/CODEOWNERS` — review ownership for `.ai/` directory
 - `.github/ISSUE_TEMPLATE/` — structured issue templates (bug_report, improvement)
 - `.github/pull_request_template.md` — PR quality checklist

@@ -13,7 +13,7 @@ System Architect — відповідає за дизайн репозиторі
 
 ## Системний промпт
 
-[`.ai/prompts/system/architect.system.md`](../../prompts/system/architect.system.md)
+[`.ai/prompts/system/agent.architect.system.md`](../../prompts/system/agent.architect.system.md)
 
 ## Коли залучати
 

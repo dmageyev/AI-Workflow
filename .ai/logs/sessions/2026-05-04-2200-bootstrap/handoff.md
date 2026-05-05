@@ -77,8 +77,8 @@
 - `.ai/agents/roles/worker.md`
 - `.ai/agents/roles/reviewer.md`
 - `.ai/agents/roles/researcher.md`
-- `.ai/prompts/system/orchestrator.system.md`
-- `.ai/prompts/system/architect.system.md`
+- `.ai/prompts/system/agent.orchestrator.system.md`
+- `.ai/prompts/system/agent.architect.system.md`
 - `.ai/prompts/system/agent.worker.system.md`
 - `.ai/prompts/system/agent.reviewer.system.md`
 - `.ai/prompts/system/agent.researcher.system.md`

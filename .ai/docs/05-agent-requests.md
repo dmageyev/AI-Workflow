@@ -18,8 +18,8 @@
 
 | Агент | Файл системного промпту |
 | ----- | ----------------------- |
-| Architect | [`.ai/prompts/system/architect.system.md`](../prompts/system/architect.system.md) |
-| Orchestrator | [`.ai/prompts/system/orchestrator.system.md`](../prompts/system/orchestrator.system.md) |
+| Architect | [`.ai/prompts/system/agent.architect.system.md`](../prompts/system/agent.architect.system.md) |
+| Orchestrator | [`.ai/prompts/system/agent.orchestrator.system.md`](../prompts/system/agent.orchestrator.system.md) |
 | Worker | [`.ai/prompts/system/agent.worker.system.md`](../prompts/system/agent.worker.system.md) |
 | Reviewer | [`.ai/prompts/system/agent.reviewer.system.md`](../prompts/system/agent.reviewer.system.md) |
 | Researcher | [`.ai/prompts/system/agent.researcher.system.md`](../prompts/system/agent.researcher.system.md) |
@@ -56,7 +56,7 @@
 ### Запит до Orchestrator (початок сесії)
 
 ```text
-[System]: <вміст .ai/prompts/system/orchestrator.system.md>
+[System]: <вміст .ai/prompts/system/agent.orchestrator.system.md>
 
 Прочитай .ai/memory/state/project-state.yaml та останній handoff з .ai/logs/sessions/.
 
@@ -114,7 +114,7 @@ Acceptance criteria:
 ### Запит до Architect (архітектурне рішення)
 
 ```text
-[System]: <вміст .ai/prompts/system/architect.system.md>
+[System]: <вміст .ai/prompts/system/agent.architect.system.md>
 
 Питання/проблема: <опис>
 

@@ -73,8 +73,8 @@ AI-Workflow/
 
     prompts/
       system/
-        architect.system.md
-        orchestrator.system.md
+        agent.architect.system.md
+        agent.orchestrator.system.md
         agent.worker.system.md
         agent.reviewer.system.md
         agent.researcher.system.md

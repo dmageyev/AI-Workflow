@@ -1,10 +1,10 @@
-version: 3
+version: 4
 project: "AI-Workflow"
 date: "2026-05-05"
 owner: "dmageyev"
 
 objective_ua: "Покращення шаблону репозиторію для мультиагентної роботи"
-current_focus: "review in progress"
+current_focus: "improvements batch 2"
 
 agents:
   active:
@@ -16,8 +16,8 @@ agents:
     - "researcher"
 
 state:
-  phase: "review"
-  progress: 90
+  phase: "in-progress"
+  progress: 10
 
 constraints:
   language_policy: "UA content, EN technical terms"
@@ -25,6 +25,48 @@ constraints:
   handoff_policy: "Every session produces snapshot + handoff"
 
 work_items:
+  - id: "IMPR-020"
+    title: "ADR template (0000-adr-template.md)"
+    status: "done"
+    notes: "Шаблон ADR створено у .ai/memory/decisions/"
+  - id: "IMPR-021"
+    title: "Add test.task.md prompt"
+    status: "done"
+    notes: "Task-промпт для перевірки артефактів додано у .ai/prompts/tasks/"
+  - id: "IMPR-022"
+    title: "Add SECURITY.md"
+    status: "done"
+    notes: "SECURITY.md створено у корені репо"
+  - id: "IMPR-023"
+    title: "Unify system prompt naming (agent.architect, agent.orchestrator)"
+    status: "done"
+    notes: "Файли перейменовано, всі посилання оновлено"
+  - id: "IMPR-024"
+    title: "Add merge conflict resolution section to runbook"
+    status: "done"
+    notes: "Секція 7 додана до .ai/workflows/runbook.uk.md"
+  - id: "IMPR-025"
+    title: "Update llms.txt with sessions/README.md"
+    status: "done"
+    notes: ".ai/logs/README.md та SECURITY.md додані до llms.txt"
+  - id: "IMPR-026"
+    title: "Add GitHub Discussions section to 06-adapting-template.md"
+    status: "done"
+    notes: "Секція про GitHub Discussions додана"
+  - id: "IMPR-027"
+    title: "CI: snapshot.yaml content validation"
+    status: "done"
+    notes: "Перевірка обов'язкових полів snapshot.yaml додана до lint.yml"
+  - id: "IMPR-028"
+    title: "CI: ADR filename validation"
+    status: "done"
+    notes: "Перевірка формату NNNN-kebab-case.md додана до lint.yml"
+  - id: "IMPR-029"
+    title: "Archive completed work items in project-state.yaml"
+    status: "done"
+    notes: "Секція archived_items додана, CI оновлено для її підтримки"
+
+archived_items:
   - id: "BOOT-001"
     title: "Create repo structure"
     status: "done"
@@ -122,3 +164,4 @@ decision_links:
   - ".ai/memory/decisions/0001-record-architecture.md"
   - ".ai/memory/decisions/0002-ci-session-structure-check.md"
   - ".ai/memory/decisions/0003-github-templates.md"
+

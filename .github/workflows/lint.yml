@@ -116,6 +116,20 @@ jobs:
           elif "phase" not in state:
               errors.append("missing required field: state.phase")
 
+          # Validate archived_items items all have status: done
+          archived = doc.get("archived_items", [])
+          if not isinstance(archived, list):
+              errors.append("'archived_items' must be a list")
+          else:
+              for item in archived:
+                  if not isinstance(item, dict):
+                      errors.append("each item in 'archived_items' must be a mapping")
+                  elif item.get("status") != "done":
+                      errors.append(
+                          f"archived_items[{item.get('id', '?')}]: "
+                          f"status must be 'done', got '{item.get('status')}'"
+                      )
+
           if errors:
               for err in errors:
                   print(f"ERROR: {state_file}: {err}")
@@ -123,3 +137,104 @@ jobs:
 
           print(f"OK: {state_file} has all required fields (including state.phase)")
           PYEOF
+
+  snapshot-content-check:
+    name: Snapshot Content Validation
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate snapshot.yaml required fields
+        shell: bash
+        run: |
+          SESSIONS_DIR=".ai/logs/sessions"
+
+          if [ ! -d "$SESSIONS_DIR" ]; then
+            echo "INFO: $SESSIONS_DIR does not exist, skipping check."
+            exit 0
+          fi
+
+          export SESSIONS_DIR
+          python3 - <<'PYEOF'
+          import os
+          import sys
+          import yaml
+
+          sessions_dir = os.environ["SESSIONS_DIR"]
+          REQUIRED_FIELDS = ("version", "project", "date", "state")
+          REQUIRED_STATE_FIELDS = ("phase",)
+
+          errors = []
+
+          for session in sorted(os.listdir(sessions_dir)):
+              session_path = os.path.join(sessions_dir, session)
+              if not os.path.isdir(session_path):
+                  continue
+              snapshot_path = os.path.join(session_path, "snapshot.yaml")
+              if not os.path.isfile(snapshot_path):
+                  # Missing file already caught by session-structure job
+                  continue
+              with open(snapshot_path, "r", encoding="utf-8") as f:
+                  try:
+                      doc = yaml.safe_load(f)
+                  except yaml.YAMLError as exc:
+                      errors.append(f"{snapshot_path}: YAML parse error: {exc}")
+                      continue
+              if not isinstance(doc, dict):
+                  errors.append(f"{snapshot_path}: root must be a YAML mapping")
+                  continue
+              for field in REQUIRED_FIELDS:
+                  if field not in doc:
+                      errors.append(f"{snapshot_path}: missing required field '{field}'")
+              state = doc.get("state")
+              if isinstance(state, dict):
+                  for sf in REQUIRED_STATE_FIELDS:
+                      if sf not in state:
+                          errors.append(f"{snapshot_path}: missing required field 'state.{sf}'")
+              elif "state" in doc:
+                  errors.append(f"{snapshot_path}: 'state' must be a mapping")
+
+          if errors:
+              for err in errors:
+                  print(f"ERROR: {err}")
+              sys.exit(1)
+
+          print("OK: all snapshot.yaml files have required fields")
+          PYEOF
+
+  adr-naming-check:
+    name: ADR Filename Check
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check ADR filename convention
+        shell: bash
+        run: |
+          ADR_DIR=".ai/memory/decisions"
+          EXIT_CODE=0
+
+          if [ ! -d "$ADR_DIR" ]; then
+            echo "INFO: $ADR_DIR does not exist, skipping check."
+            exit 0
+          fi
+
+          for f in "$ADR_DIR"/*.md; do
+            [ -f "$f" ] || continue
+            basename_f=$(basename "$f")
+            # Allow 0000-adr-template.md as the template file
+            # Valid pattern: NNNN-kebab-case-words.md (digits-lowercase-or-digits-with-hyphens)
+            if ! echo "$basename_f" | grep -qE '^[0-9]{4}-[a-z0-9][a-z0-9-]*\.md$'; then
+              echo "ERROR: $f does not follow ADR naming convention (expected: NNNN-kebab-case-title.md)"
+              EXIT_CODE=1
+            fi
+          done
+
+          if [ "$EXIT_CODE" -eq 0 ]; then
+            echo "OK: All ADR files follow the naming convention"
+          fi
+          exit "$EXIT_CODE"

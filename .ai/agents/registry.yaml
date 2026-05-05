@@ -1,7 +1,7 @@
 agents:
   - id: "architect"
     role: "System Architect"
-    prompt: ".ai/prompts/system/architect.system.md"
+    prompt: ".ai/prompts/system/agent.architect.system.md"
     responsibilities:
       - "Проєктує структуру репозиторію та протоколи"
       - "Веде .ai/docs/01-architecture.md та .ai/docs/03-handoff-protocol.md"
@@ -13,7 +13,7 @@ agents:
 
   - id: "orchestrator"
     role: "Orchestrator"
-    prompt: ".ai/prompts/system/orchestrator.system.md"
+    prompt: ".ai/prompts/system/agent.orchestrator.system.md"
     responsibilities:
       - "Координує роботу агентів"
       - "Підтримує .ai/memory/state/project-state.yaml"
