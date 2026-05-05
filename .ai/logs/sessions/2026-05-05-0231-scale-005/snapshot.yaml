@@ -1,0 +1,45 @@
+version: 4
+project: "AI-Workflow"
+date: "2026-05-05"
+time: "02:31"
+owner: "dmageyev"
+
+objective_ua: "SCALE-005 — консолідація кореневих файлів шаблону до .ai/"
+current_focus: "review — PR #1 відкрито, очікує рев'ю"
+
+agents:
+  active:
+    - "orchestrator"
+    - "worker"
+  available:
+    - "architect"
+    - "reviewer"
+    - "researcher"
+
+state:
+  phase: "review"
+  progress: 90
+
+constraints:
+  language_policy: "UA content, EN technical terms"
+  repo_policy: "All decisions recorded as ADR"
+  handoff_policy: "Every session produces snapshot + handoff"
+
+work_items:
+  - id: "SCALE-005"
+    title: "Consolidate template root files into .ai/ directory"
+    status: "in-progress"
+    notes: >-
+      Переміщено: STATUS.md, ROADMAP.md, QUICKSTART.md, VERSION → .ai/.
+      llms.txt залишається в корені (стандарт llmstxt.org). ADR-0004 зафіксовано.
+      PR #1 відкрито — очікує merge.
+
+knowledge_links:
+  - ".ai/memory/knowledge/domain-notes.md"
+  - ".ai/memory/glossary.uk.md"
+
+decision_links:
+  - ".ai/memory/decisions/0001-record-architecture.md"
+  - ".ai/memory/decisions/0002-ci-session-structure-check.md"
+  - ".ai/memory/decisions/0003-github-templates.md"
+  - ".ai/memory/decisions/0004-root-files-consolidation.md"

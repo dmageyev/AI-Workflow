@@ -1,0 +1,53 @@
+version: 5
+project: "AI-Workflow"
+date: "2026-05-05"
+owner: "dmageyev"
+
+objective_ua: "Покращення шаблону репозиторію для мультиагентної роботи"
+current_focus: "review — PR #1 відкрито, SCALE-005 очікує merge"
+
+agents:
+  active:
+    - "orchestrator"
+  available:
+    - "architect"
+    - "worker"
+    - "reviewer"
+    - "researcher"
+
+state:
+  phase: "review"
+  progress: 90
+
+constraints:
+  language_policy: "UA content, EN technical terms"
+  repo_policy: "All decisions recorded as ADR"
+  handoff_policy: "Every session produces snapshot + handoff"
+
+# Правило: після milestone всі done-items (крім останнього) переносяться до
+# .ai/memory/state/work-items-archive.yaml.
+# Останній done-item залишається тут як breadcrumb поточного стану.
+work_items:
+  - id: "IMPR-029"
+    title: "Separate work-items-archive.yaml file for done items"
+    status: "done"
+    notes: >-
+      Окремий файл .ai/memory/state/work-items-archive.yaml.
+      CI оновлено. Усі попередні done-items перенесено до архіву (milestone v1, v2).
+  - id: "SCALE-005"
+    title: "Consolidate template root files into .ai/ directory"
+    status: "in-progress"
+    notes: >-
+      Переміщення STATUS.md, ROADMAP.md, QUICKSTART.md, VERSION до .ai/.
+      llms.txt залишається в корені (стандарт llmstxt.org).
+      ADR-0004. Зменшення "шуму" в корені репо для AI-агентів.
+
+knowledge_links:
+  - ".ai/memory/knowledge/domain-notes.md"
+  - ".ai/memory/glossary.uk.md"
+
+decision_links:
+  - ".ai/memory/decisions/0001-record-architecture.md"
+  - ".ai/memory/decisions/0002-ci-session-structure-check.md"
+  - ".ai/memory/decisions/0003-github-templates.md"
+  - ".ai/memory/decisions/0004-root-files-consolidation.md"

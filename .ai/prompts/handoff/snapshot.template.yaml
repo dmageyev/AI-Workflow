@@ -1,0 +1,39 @@
+version: 1
+project: "AI-Workflow"
+date: "YYYY-MM-DD"
+time: "HH:MM"
+owner: "dmageyev"
+template_version: "1.2.0"  # версія шаблону AI-Workflow, на базі якого створено цей snapshot
+
+objective_ua: ""
+current_focus: ""
+
+agents:
+  active:
+    - "orchestrator"
+  available:
+    - "architect"
+    - "worker"
+    - "reviewer"
+    - "researcher"
+
+state:
+  phase: "bootstrap"
+  progress: 0
+  confidence: 0  # 0-100: суб'єктивна оцінка якості виконаної роботи
+
+constraints:
+  language_policy: "UA content, EN technical terms"
+  repo_policy: "All decisions recorded as ADR"
+  handoff_policy: "Every session produces snapshot + handoff"
+
+work_items:
+  - id: "BOOT-001"
+    title: "Create repo structure"
+    status: "todo"
+    notes: ""
+
+knowledge_links:
+  - ".ai/memory/knowledge/domain-notes.md"
+
+decision_links: []

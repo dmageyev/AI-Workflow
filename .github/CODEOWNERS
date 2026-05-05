@@ -1,0 +1,9 @@
+# CODEOWNERS
+# Власники файлів. Їх review запитується автоматично для змін у цих шляхах.
+# Примітка: обов'язковість review залежить від налаштувань branch protection rules.
+
+# Весь .ai/ tree
+.ai/ @dmageyev
+
+# CI конфігурація
+.github/workflows/ @dmageyev

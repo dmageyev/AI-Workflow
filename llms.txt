@@ -1,0 +1,75 @@
+# llms.txt — AI-Workflow
+
+> This file describes the repository structure for LLM tools and AI coding agents.
+> Convention: https://llmstxt.org
+
+## Project
+
+- **Name**: AI-Workflow
+- **Owner**: dmageyev
+- **Purpose**: Template repository for multi-agent work with a "consciousness transfer" (handoff) protocol.
+- **Language policy**: Content in Ukrainian; file names, YAML keys, technical terms in English.
+
+## Key entry points
+
+- `README.md` — project overview and usage instructions
+- `.ai/QUICKSTART.md` — 5-step guide from zero to first session
+- `.ai/docs/bootstrap/start_promt.md` — bootstrap prompt for new repo / new work cycle
+- `.ai/docs/bootstrap/start_guide.md` — instructions for using the start prompt
+- `.ai/docs/bootstrap/create-repo-prompt.md` — prompt to reproduce this structure in a new repository
+- `.ai/docs/05-agent-requests.md` — how to structure requests to agents
+
+## AI agent configuration
+
+- `.ai/agents/registry.yaml` — agent registry (roles, prompt files)
+- `.ai/prompts/system/` — system prompts for all roles
+- `.ai/prompts/tasks/` — task prompts (create-plan, implement-feature, review, debug, delegate, research, test)
+- `.ai/prompts/handoff/` — handoff package templates
+
+## Project state (canonical)
+
+- `.ai/memory/state/project-state.yaml` — current phase, progress, active work items (breadcrumb of last done)
+- `.ai/memory/state/work-items-archive.yaml` — archived done items grouped by milestone
+- `.ai/logs/sessions/` — session history (Handoff Packages: snapshot.yaml + handoff.md)
+- `.ai/logs/README.md` — format rules and naming convention for session folders
+
+## Knowledge base
+
+- `.ai/memory/glossary.uk.md` — project glossary
+- `.ai/memory/knowledge/` — domain notes and research findings
+- `.ai/memory/decisions/` — Architecture Decision Records (ADR)
+
+## Documentation
+
+- `.ai/docs/00-vision.md` — project vision
+- `.ai/docs/01-architecture.md` — multi-agent system architecture
+- `.ai/docs/02-workflow.md` — session lifecycle and operational model
+- `.ai/docs/03-handoff-protocol.md` — handoff protocol specification
+- `.ai/docs/04-quality-gates.md` — quality checklists (session close, handoff, ADR)
+- `.ai/docs/05-agent-requests.md` — how to make requests to agents
+- `.ai/docs/06-adapting-template.md` — how to adapt this template for your own project
+- `.ai/STATUS.md` — live project status dashboard
+- `.ai/ROADMAP.md` — milestone roadmap
+- `.ai/VERSION` — semver version of the template
+
+## Workflows
+
+- `.ai/workflows/runbook.uk.md` — operational runbook
+- `.ai/workflows/examples/example-handoff.md` — reference to real bootstrap session
+
+## CI
+
+- `.github/workflows/lint.yml` — Markdown lint + YAML lint + session structure check
+  + project-state validation + work-items-archive validation + snapshot content check
+  + ADR filename check
+- `.markdownlint.json` — markdownlint config (120-char line limit)
+- `.yamllint.yml` — yamllint config
+
+## Contributing
+
+- `CONTRIBUTING.md` — contribution guidelines for this template repository
+- `CHANGELOG.md` — version history of template changes
+- `SECURITY.md` — security policy and vulnerability reporting
+- `.github/CODEOWNERS` — review ownership for `.ai/` directory
+- `.github/ISSUE_TEMPLATE/` — structured issue templates (bug_report, improvement)
+- `.github/pull_request_template.md` — PR quality checklist

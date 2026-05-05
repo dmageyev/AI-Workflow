@@ -1,0 +1,526 @@
+name: Lint Markdown and YAML
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["**"]
+
+jobs:
+  markdownlint:
+    name: Markdown Lint
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install markdownlint-cli
+        run: npm install -g markdownlint-cli
+
+      - name: Run markdownlint
+        run: markdownlint "**/*.md" --ignore node_modules
+
+  yamllint:
+    name: YAML Lint
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install yamllint
+        run: pip install yamllint
+
+      - name: Run yamllint
+        run: yamllint -c .yamllint.yml .
+
+  session-structure:
+    name: Session Structure Check
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check session folder structure
+        shell: bash
+        run: |
+          EXIT_CODE=0
+          SESSIONS_DIR=".ai/logs/sessions"
+
+          if [ ! -d "$SESSIONS_DIR" ]; then
+            echo "INFO: $SESSIONS_DIR does not exist, skipping check."
+            exit 0
+          fi
+
+          for session_dir in "$SESSIONS_DIR"/*/; do
+            [ -d "$session_dir" ] || continue
+            session_name=$(basename "$session_dir")
+
+            if [ ! -f "$session_dir/snapshot.yaml" ]; then
+              echo "ERROR: $session_dir is missing snapshot.yaml"
+              EXIT_CODE=1
+            fi
+
+            if [ ! -f "$session_dir/handoff.md" ]; then
+              echo "ERROR: $session_dir is missing handoff.md"
+              EXIT_CODE=1
+            fi
+          done
+
+          if [ "$EXIT_CODE" -eq 0 ]; then
+            echo "OK: All session folders have snapshot.yaml and handoff.md"
+          fi
+          exit "$EXIT_CODE"
+
+  project-state-check:
+    name: Project State Validation
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate project-state.yaml required fields
+        shell: bash
+        run: |
+          STATE_FILE=".ai/memory/state/project-state.yaml"
+
+          if [ ! -f "$STATE_FILE" ]; then
+            echo "ERROR: $STATE_FILE not found"
+            exit 1
+          fi
+
+          export STATE_FILE
+          python3 - <<'PYEOF'
+          import os
+          import sys
+          import yaml
+
+          state_file = os.environ["STATE_FILE"]
+          with open(state_file, "r", encoding="utf-8") as f:
+              doc = yaml.safe_load(f)
+
+          errors = []
+
+          # Validate top-level required fields
+          for field in ("version", "date", "work_items"):
+              if field not in doc:
+                  errors.append(f"missing top-level field: {field}")
+
+          # Validate nested state.phase specifically
+          state = doc.get("state")
+          if not isinstance(state, dict):
+              errors.append("missing or invalid 'state' block")
+          elif "phase" not in state:
+              errors.append("missing required field: state.phase")
+
+          # archived_items must NOT appear in project-state.yaml (moved to work-items-archive.yaml)
+          if "archived_items" in doc:
+              errors.append(
+                  "'archived_items' must not be in project-state.yaml; "
+                  "use .ai/memory/state/work-items-archive.yaml instead"
+              )
+
+          if errors:
+              for err in errors:
+                  print(f"ERROR: {state_file}: {err}")
+              sys.exit(1)
+
+          print(f"OK: {state_file} has all required fields (including state.phase)")
+          PYEOF
+
+  work-items-archive-check:
+    name: Work Items Archive Validation
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate work-items-archive.yaml structure
+        shell: bash
+        run: |
+          ARCHIVE_FILE=".ai/memory/state/work-items-archive.yaml"
+
+          if [ ! -f "$ARCHIVE_FILE" ]; then
+            echo "INFO: $ARCHIVE_FILE does not exist, skipping check."
+            exit 0
+          fi
+
+          export ARCHIVE_FILE
+          python3 - <<'PYEOF'
+          import os
+          import sys
+          import yaml
+
+          archive_file = os.environ["ARCHIVE_FILE"]
+          with open(archive_file, "r", encoding="utf-8") as f:
+              doc = yaml.safe_load(f)
+
+          errors = []
+
+          if not isinstance(doc, dict):
+              print(f"ERROR: {archive_file}: root must be a YAML mapping")
+              sys.exit(1)
+
+          milestones = doc.get("milestones", [])
+          if not isinstance(milestones, list):
+              errors.append("'milestones' must be a list")
+          else:
+              for ms in milestones:
+                  if not isinstance(ms, dict):
+                      errors.append("each milestone must be a mapping")
+                      continue
+                  ms_id = ms.get("id", "?")
+                  for field in ("id", "closed_at", "items"):
+                      if field not in ms:
+                          errors.append(f"milestone '{ms_id}': missing field '{field}'")
+                  items = ms.get("items", [])
+                  if not isinstance(items, list):
+                      errors.append(f"milestone '{ms_id}': 'items' must be a list")
+                  else:
+                      for item in items:
+                          if not isinstance(item, dict):
+                              errors.append(f"milestone '{ms_id}': each item must be a mapping")
+                          elif item.get("status") != "done":
+                              errors.append(
+                                  f"milestone '{ms_id}', item '{item.get('id', '?')}': "
+                                  f"status must be 'done', got '{item.get('status')}'"
+                              )
+
+          if errors:
+              for err in errors:
+                  print(f"ERROR: {archive_file}: {err}")
+              sys.exit(1)
+
+          total = sum(len(ms.get("items", [])) for ms in milestones)
+          print(f"OK: {archive_file} is valid ({len(milestones)} milestones, {total} items)")
+          PYEOF
+
+  snapshot-content-check:
+    name: Snapshot Content Validation
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate snapshot.yaml required fields
+        shell: bash
+        run: |
+          SESSIONS_DIR=".ai/logs/sessions"
+
+          if [ ! -d "$SESSIONS_DIR" ]; then
+            echo "INFO: $SESSIONS_DIR does not exist, skipping check."
+            exit 0
+          fi
+
+          export SESSIONS_DIR
+          python3 - <<'PYEOF'
+          import os
+          import sys
+          import yaml
+
+          sessions_dir = os.environ["SESSIONS_DIR"]
+          REQUIRED_FIELDS = ("version", "project", "date", "state")
+          REQUIRED_STATE_FIELDS = ("phase",)
+
+          errors = []
+
+          for session in sorted(os.listdir(sessions_dir)):
+              session_path = os.path.join(sessions_dir, session)
+              if not os.path.isdir(session_path):
+                  continue
+              snapshot_path = os.path.join(session_path, "snapshot.yaml")
+              if not os.path.isfile(snapshot_path):
+                  # Missing file already caught by session-structure job
+                  continue
+              with open(snapshot_path, "r", encoding="utf-8") as f:
+                  try:
+                      doc = yaml.safe_load(f)
+                  except yaml.YAMLError as exc:
+                      errors.append(f"{snapshot_path}: YAML parse error: {exc}")
+                      continue
+              if not isinstance(doc, dict):
+                  errors.append(f"{snapshot_path}: root must be a YAML mapping")
+                  continue
+              for field in REQUIRED_FIELDS:
+                  if field not in doc:
+                      errors.append(f"{snapshot_path}: missing required field '{field}'")
+              state = doc.get("state")
+              if isinstance(state, dict):
+                  for sf in REQUIRED_STATE_FIELDS:
+                      if sf not in state:
+                          errors.append(f"{snapshot_path}: missing required field 'state.{sf}'")
+              elif "state" in doc:
+                  errors.append(f"{snapshot_path}: 'state' must be a mapping")
+
+          if errors:
+              for err in errors:
+                  print(f"ERROR: {err}")
+              sys.exit(1)
+
+          print("OK: all snapshot.yaml files have required fields")
+          PYEOF
+
+  adr-uniqueness-check:
+    name: ADR Number Uniqueness Check
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check ADR number uniqueness
+        shell: bash
+        run: |
+          ADR_DIR=".ai/memory/decisions"
+          EXIT_CODE=0
+
+          if [ ! -d "$ADR_DIR" ]; then
+            echo "INFO: $ADR_DIR does not exist, skipping check."
+            exit 0
+          fi
+
+          python3 - <<'PYEOF'
+          import os
+          import re
+          import sys
+
+          adr_dir = ".ai/memory/decisions"
+          pattern = re.compile(r'^(\d{4})-')
+          seen = {}
+          errors = []
+
+          for fname in sorted(os.listdir(adr_dir)):
+              m = pattern.match(fname)
+              if not m:
+                  continue
+              num = m.group(1)
+              if num in seen:
+                  errors.append(
+                      f"Duplicate ADR number {num}: '{seen[num]}' and '{fname}'"
+                  )
+              else:
+                  seen[num] = fname
+
+          if errors:
+              for err in errors:
+                  print(f"ERROR: {err}")
+              sys.exit(1)
+
+          print(f"OK: {len(seen)} ADR files, all numbers are unique")
+          PYEOF
+
+  work-items-id-dedup-check:
+    name: Work Items ID Deduplication Check
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check for duplicate work item IDs across active and archive
+        shell: bash
+        run: |
+          STATE_FILE=".ai/memory/state/project-state.yaml"
+          ARCHIVE_FILE=".ai/memory/state/work-items-archive.yaml"
+
+          if [ ! -f "$STATE_FILE" ]; then
+            echo "INFO: $STATE_FILE does not exist, skipping check."
+            exit 0
+          fi
+
+          export STATE_FILE ARCHIVE_FILE
+          python3 - <<'PYEOF'
+          import os
+          import sys
+          import yaml
+
+          state_file = os.environ["STATE_FILE"]
+          archive_file = os.environ.get("ARCHIVE_FILE", "")
+
+          with open(state_file, "r", encoding="utf-8") as f:
+              state = yaml.safe_load(f)
+
+          active_ids = {item["id"] for item in state.get("work_items", []) if "id" in item}
+          errors = []
+
+          if archive_file and os.path.isfile(archive_file):
+              with open(archive_file, "r", encoding="utf-8") as f:
+                  archive = yaml.safe_load(f)
+              archive_ids = set()
+              for ms in (archive or {}).get("milestones", []):
+                  for item in ms.get("items", []):
+                      if "id" in item:
+                          if item["id"] in archive_ids:
+                              errors.append(
+                                  f"Duplicate ID in archive: '{item['id']}'"
+                              )
+                          archive_ids.add(item["id"])
+
+              overlap = active_ids & archive_ids
+              for dup in sorted(overlap):
+                  errors.append(
+                      f"ID '{dup}' appears in both project-state.yaml "
+                      f"and work-items-archive.yaml"
+                  )
+
+          if errors:
+              for err in errors:
+                  print(f"ERROR: {err}")
+              sys.exit(1)
+
+          print("OK: No duplicate work item IDs found")
+          PYEOF
+
+  dead-links-check:
+    name: Dead Links Check
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check for dead internal links in Markdown files
+        shell: bash
+        run: |
+          python3 - <<'PYEOF'
+          import os
+          import re
+          import sys
+          import urllib.parse
+
+          # Match [text](path) — only relative (non-http) links
+          LINK_RE = re.compile(r'\[(?:[^\]]*)\]\(([^)]+)\)')
+          # Match reference-style link definitions: [label]: path
+          REF_RE = re.compile(r'^\[(?:[^\]]+)\]:\s+(\S+)', re.MULTILINE)
+          errors = []
+
+          for root, dirs, files in os.walk("."):
+              # Skip .git directory
+              dirs[:] = [d for d in dirs if d != ".git" and not d.startswith(".git/")]
+              for fname in files:
+                  if not fname.endswith(".md"):
+                      continue
+                  fpath = os.path.join(root, fname)
+                  with open(fpath, "r", encoding="utf-8", errors="replace") as f:
+                      content = f.read()
+                  for match in LINK_RE.finditer(content):
+                      raw = match.group(1)
+                      # Skip external URLs, mailto, anchors-only
+                      if raw.startswith(("http://", "https://", "mailto:", "#")):
+                          continue
+                      # Strip inline anchor
+                      path_part = raw.split("#")[0]
+                      if not path_part:
+                          continue
+                      # Decode percent-encoding
+                      path_part = urllib.parse.unquote(path_part)
+                      # Resolve relative to the file's directory
+                      target = os.path.normpath(
+                          os.path.join(os.path.dirname(fpath), path_part)
+                      )
+                      if not os.path.exists(target):
+                          errors.append(f"{fpath}: dead link → '{raw}'")
+                  # Also check reference-style link definitions
+                  for match in REF_RE.finditer(content):
+                      raw = match.group(1)
+                      if raw.startswith(("http://", "https://", "mailto:", "#", "<")):
+                          continue
+                      path_part = raw.split("#")[0]
+                      if not path_part:
+                          continue
+                      path_part = urllib.parse.unquote(path_part)
+                      target = os.path.normpath(
+                          os.path.join(os.path.dirname(fpath), path_part)
+                      )
+                      if not os.path.exists(target):
+                          errors.append(f"{fpath}: dead reference link → '{raw}'")
+
+          if errors:
+              for err in errors:
+                  print(f"ERROR: {err}")
+              sys.exit(1)
+
+          print("OK: No dead internal links found")
+          PYEOF
+
+  adr-naming-check:
+    name: ADR Filename Check
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check ADR filename convention
+        shell: bash
+        run: |
+          ADR_DIR=".ai/memory/decisions"
+          EXIT_CODE=0
+
+          if [ ! -d "$ADR_DIR" ]; then
+            echo "INFO: $ADR_DIR does not exist, skipping check."
+            exit 0
+          fi
+
+          for f in "$ADR_DIR"/*.md; do
+            [ -f "$f" ] || continue
+            basename_f=$(basename "$f")
+            # Allow 0000-adr-template.md as the template file
+            # Valid pattern: NNNN-kebab-case-words.md (digits-lowercase-or-digits-with-hyphens)
+            if ! echo "$basename_f" | grep -qE '^[0-9]{4}-[a-z0-9][a-z0-9-]*\.md$'; then
+              echo "ERROR: $f does not follow ADR naming convention (expected: NNNN-kebab-case-title.md)"
+              EXIT_CODE=1
+            fi
+          done
+
+          if [ "$EXIT_CODE" -eq 0 ]; then
+            echo "OK: All ADR files follow the naming convention"
+          fi
+          exit "$EXIT_CODE"
+
+  version-changelog-sync:
+    name: VERSION and CHANGELOG Sync Check
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check VERSION matches latest CHANGELOG entry
+        shell: bash
+        run: |
+          VERSION_FILE=".ai/VERSION"
+          CHANGELOG_FILE="CHANGELOG.md"
+
+          if [ ! -f "$VERSION_FILE" ]; then
+            echo "INFO: $VERSION_FILE does not exist, skipping check."
+            exit 0
+          fi
+
+          if [ ! -f "$CHANGELOG_FILE" ]; then
+            echo "INFO: $CHANGELOG_FILE does not exist, skipping check."
+            exit 0
+          fi
+
+          VERSION=$(tr -d '[:space:]' < "$VERSION_FILE")
+
+          # Extract the latest versioned section (## [X.Y.Z]) from CHANGELOG, skip [Unreleased]
+          LATEST_CHANGELOG=$(grep -oE '^\#\# \[[0-9]+\.[0-9]+\.[0-9]+\]' "$CHANGELOG_FILE" | head -1 | grep -oE '[0-9]+\.[0-9]+\.[0-9]+')
+
+          if [ -z "$LATEST_CHANGELOG" ]; then
+            echo "INFO: No versioned section found in $CHANGELOG_FILE, skipping sync check."
+            exit 0
+          fi
+
+          if [ "$VERSION" != "$LATEST_CHANGELOG" ]; then
+            echo "ERROR: VERSION file contains '$VERSION' but latest CHANGELOG entry is '[$LATEST_CHANGELOG]'"
+            echo "       Update VERSION to match or add a new CHANGELOG section."
+            exit 1
+          fi
+
+          echo "OK: VERSION ($VERSION) matches latest CHANGELOG entry [$LATEST_CHANGELOG]"
